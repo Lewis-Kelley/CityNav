@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<diagram program="umlet" version="13.3">
+  <zoom_level>10</zoom_level>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>40</x>
+      <y>20</y>
+      <w>210</w>
+      <h>100</h>
+    </coordinates>
+    <panel_attributes>Node
+--
+- name: String
+- coord: Coordinate
+- interest: int
+- neighbors: ArrayList&lt;Node&gt;</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>320</x>
+      <y>30</y>
+      <w>330</w>
+      <h>80</h>
+    </coordinates>
+    <panel_attributes>Coordinate
+--
+- latitude: double
+- longitude: double
+--
+- distance(Coordinate one, Coordinate two): double</panel_attributes>
+    <additional_attributes/>
+  </element>
+</diagram>
