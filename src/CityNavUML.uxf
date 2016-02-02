@@ -4,33 +4,108 @@
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>40</x>
-      <y>20</y>
-      <w>210</w>
-      <h>100</h>
+      <x>120</x>
+      <y>290</y>
+      <w>500</w>
+      <h>160</h>
     </coordinates>
     <panel_attributes>Node
 --
 - name: String
 - coord: Coordinate
 - interest: int
-- neighbors: ArrayList&lt;Node&gt;</panel_attributes>
+- neighbors: ArrayList&lt;Path&gt;
+--
++ distance(Coordinate other): double
++ time(Coordinate other): double
++ generateChildren(boolean byTime, int currCost): HashMap&lt;Node, Integer&gt;
++ compareTo(Node other): int</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>320</x>
-      <y>30</y>
-      <w>330</w>
-      <h>80</h>
+      <x>250</x>
+      <y>510</y>
+      <w>240</w>
+      <h>100</h>
     </coordinates>
     <panel_attributes>Coordinate
 --
 - latitude: double
 - longitude: double
 --
-- distance(Coordinate one, Coordinate two): double</panel_attributes>
++ distance(Coordinate other): double
++ time(Coordinate other): double</panel_attributes>
     <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>360</x>
+      <y>440</y>
+      <w>30</w>
+      <h>90</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-</panel_attributes>
+    <additional_attributes>10.0;70.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>590</x>
+      <y>490</y>
+      <w>130</w>
+      <h>80</h>
+    </coordinates>
+    <panel_attributes>Path
+--
++ length: double
++ time: double
++ destination: Node</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>610</x>
+      <y>370</y>
+      <w>80</w>
+      <h>140</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-&gt;
+m1=0..n
+m2=1</panel_attributes>
+    <additional_attributes>40.0;120.0;40.0;10.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>150</x>
+      <y>100</y>
+      <w>440</w>
+      <h>120</h>
+    </coordinates>
+    <panel_attributes>Graph
+--
+- nodes: HashMap&lt;String, Node&gt;
+- interest: TreeSet&lt;Node&gt;
+--
++ search(String start, String end, boolean byTime): Stack&lt;Node&gt;
++ mostInteresting(int count): ArrayList&lt;Node&gt;
++ planner(boolean byTime, int maxCost): ArrayList&lt;Stack&lt;Node&gt; &gt;</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>360</x>
+      <y>210</y>
+      <w>30</w>
+      <h>100</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-
+m1=n</panel_attributes>
+    <additional_attributes>10.0;80.0;10.0;10.0</additional_attributes>
   </element>
 </diagram>
