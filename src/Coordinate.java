@@ -31,7 +31,8 @@ public class Coordinate {
 		double xdist = Math.abs(this.x-other.x);
 		double ydist = Math.abs(this.y-other.y);
 		return Math.hypot(xdist, ydist);
-//		return Math.sqrt(xdist*xdist+ydist*ydist);
 	}
+	
+//	public double time(Coordinate other){}
 	
 }
