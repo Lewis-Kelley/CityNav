@@ -24,11 +24,29 @@ public class Node {
 	}
 
 	/**
-	 * 
-	 * Constructs an empty node for XML storage
-	 * 
+	 * Empty constructor for XML input
 	 */
 	public Node() {
+
+	}
+
+	/**
+	 * 
+	 * For XML input ONLY
+	 * 
+	 * @param neighbors
+	 *            sets neighbors to given list of paths
+	 */
+	public void setNeighbors(ArrayList<Path> neighbors) {
+		this.neighbors = neighbors;
+	}
+
+	/**
+	 * 
+	 * @return the list of paths away from this point
+	 */
+	public ArrayList<Path> getNeighbors() {
+		return this.neighbors;
 	}
 
 	/**
@@ -113,7 +131,7 @@ public class Node {
 	public double pathDistance(Node other) {
 		for (Path neighbor : this.neighbors) {
 			if (neighbor.destination(this).equals(other)) {
-				return neighbor.length;
+				return neighbor.getLength();
 			}
 		}
 
@@ -130,7 +148,7 @@ public class Node {
 	public double pathTime(Node other) {
 		for (Path neighbor : this.neighbors) {
 			if (neighbor.destination(this).equals(other)) {
-				return neighbor.time;
+				return neighbor.getTime();
 			}
 		}
 		return -1;
@@ -144,19 +162,20 @@ public class Node {
 	 * @param currCost
 	 * @return
 	 */
-	public HashMap<Node, Double> generateChildren(boolean byTime, int currCost) {
+	public HashMap<Node, Double> generateChildren(boolean byTime,
+			double currCost) {
 		HashMap<Node, Double> children = new HashMap();
 
 		if (byTime) {
 			// by time: use neighbor.time
 			for (Path neighbor : this.neighbors) {
-				children.put(neighbor.destination(this), neighbor.time
+				children.put(neighbor.destination(this), neighbor.getTime()
 						+ currCost);
 			}
 		} else {
 			// else, by dist: use neighbor.length
 			for (Path neighbor : this.neighbors) {
-				children.put(neighbor.destination(this), neighbor.length
+				children.put(neighbor.destination(this), neighbor.getLength()
 						+ currCost);
 			}
 		}
