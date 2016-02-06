@@ -25,7 +25,7 @@ public class Path {
 		nodeA.addToNeighbors(this);
 		nodeB.addToNeighbors(this);
 
-		if (length < (nodeA.coord.distance(nodeB.coord)))
+		if (length < (nodeA.getCoordinate().distance(nodeB.getCoordinate())))
 			System.out.println("Check length for " + this.toString());
 	}
 
