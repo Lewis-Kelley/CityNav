@@ -33,7 +33,11 @@ public class Coordinate {
 		return Math.hypot(xdist, ydist);
 	}
 
-	/* public double time(Coordinate other){}*/
+	 public double time(Coordinate other){
+		 double xdist = Math.abs(this.x - other.x);
+			double ydist = Math.abs(this.y - other.y);
+			return Math.hypot(xdist, ydist)/40.0;
+	 }
 	
 	// What is this supposed to do? Straight-line time, assuming a certain speed? Or am I totally
 	// missing something?
