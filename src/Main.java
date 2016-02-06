@@ -17,8 +17,6 @@ public class Main {
 		ControlsPanel.add(PathfinderPanel);
 		
 		
-		
-		
 		CityNavFrame.setVisible(true);
 	}
 	
