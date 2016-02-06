@@ -103,8 +103,7 @@ public class Node {
 	 * @return
 	 */
 	public int compareTo(Node other) {
-		return ((Comparable) this.interest)
-				.compareTo((Comparable) other.interest);
+		return this.interest-other.interest;
 	}
 
 	/**
