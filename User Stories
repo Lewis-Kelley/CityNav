@@ -2,7 +2,7 @@ Team DSL (Team 2)
 User Stories:
 1.	I want to find the shortest/quickest route from my start point to destination.
 2.	I want to find the route that lets me visit the most cities in the shortest/quickest time.
-3.	I want to find the shortest/quickest route that passes through a given set of cities.
-4.	I want to see what cities I can visit in a given amount of time/distance.
-5.	I want to find the route which lets me visit the most interesting cities in the time I have.
-6.	I can examine how interesting a given city is.
+3.	I want to see what cities I can visit in a given amount of time/distance.
+4.	I want to find the route which lets me visit the most interesting cities in the time I have.
+5.	I can examine how interesting a given city is.
+6.  I can sort and search for cities by their interest ratings. 
