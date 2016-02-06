@@ -1,0 +1,18 @@
+Our project will utilize 3 primary data structures:
+
+- A Graph will map the connections between cities, allowing for an A* search algorithm
+  to find the shortest path given distance or time as a metric
+- A Priority Queue will be constructed to facilitate the A* search algorithm
+- A Red-Black Tree will be used to store cities as compared by interest levels,
+  for lookup of most interesting cities.
+- A Stack will be used for keeping track of the path to a given Node.
+  
+The graph and priority queue are neccessary for efficient pathfinding, and the nature of cities
+with given connnections to one another lends itself to storing cities as nodes with paths as connections.
+
+The Red-Black tree for interest storing will allow rapid binary lookup. It's unlikely that the 
+number of elements stored will be large enough to cause imbalancing issues, but as RBTs are already implemented,
+it's an easy way to future-proof the design.
+
+The Stack will be useful for keeping track of the paths, since it preserves the order of the Node's and can easily
+be built up as the search progresses.
