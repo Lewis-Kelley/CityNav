@@ -2,6 +2,8 @@ import java.util.Stack;
 import java.util.HashMap;
 import java.util.TreeSet;
 import java.util.PriorityQueue;
+import java.util.Iterator;
+import java.util.ArrayList;
 
 public class Graph {
 	private class RankedNode implements Comparable {
@@ -75,5 +77,25 @@ public class Graph {
 		}
 
 		return null;
+	}
+
+	/**
+	 * Return the "count" most interesting Node's in this Graph. Passing a 0 will return all elements.
+	 *
+	 * @param count
+	 * @return
+	 */
+	public Node[] mostInteresting(int count) {
+		if(count == 0 || count > interest.size())
+			return (Node[])interest.toArray();
+		
+		ArrayList<Node> list = new ArrayList<>();
+		Iterator<Node> it = interest.iterator();
+
+		for(int i = 0; i < count; i++) {
+			list.add(it.next());
+		}
+
+		return (Node[])list.toArray();
 	}
 }
