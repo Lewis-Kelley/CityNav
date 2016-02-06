@@ -7,7 +7,7 @@ public class Node {
 	protected String name;
 	protected Coordinate coord;
 	protected int interest;
-	protected ArrayList<Path> neighbors;
+	protected ArrayList<Path> neighbors = new ArrayList();;
 
 	public Node(String name, Coordinate coord, int interest) {
 		this.name = name;
@@ -15,6 +15,14 @@ public class Node {
 		this.interest = interest;
 	}
 
+	/**
+	 * Add the Path to neighbors
+	 *
+	 * @param path
+	 */
+	public void addToNeighbors(Path path){
+		this.neighbors.add(path);
+	}
 	
 	/**
 	 * Return straight line distance to other Node's coordinate
@@ -45,7 +53,7 @@ public class Node {
 	 */
 	public double pathDistance(Node other) {
 		for (Path neighbor : this.neighbors) {
-			if (neighbor.destination.equals(other)) {
+			if (neighbor.destination(this).equals(other)) {
 				return neighbor.length;
 			}
 		}
@@ -62,7 +70,7 @@ public class Node {
 	 */
 	public double pathTime(Node other) {
 		for (Path neighbor : this.neighbors) {
-			if (neighbor.destination.equals(other)) {
+			if (neighbor.destination(this).equals(other)) {
 				return neighbor.time;
 			}
 		}
@@ -83,12 +91,12 @@ public class Node {
 		if (byTime) {
 			// by time: use neighbor.time
 			for (Path neighbor : this.neighbors) {
-				children.put(neighbor.destination, neighbor.time + currCost);
+				children.put(neighbor.destination(this), neighbor.time + currCost);
 			}
 		} else {
 			// else, by dist: use neighbor.length
 			for (Path neighbor : this.neighbors) {
-				children.put(neighbor.destination, neighbor.length + currCost);
+				children.put(neighbor.destination(this), neighbor.length + currCost);
 			}
 		}
 
@@ -120,7 +128,7 @@ public class Node {
 	 */
 	@Override
 	public String toString(){
-		return this.name+" "+this.coord.toString();
+		return this.name+" <"+this.interest+"> "+this.coord.toString();
 	}
 	
 	public void draw(Graphics2D g) {
