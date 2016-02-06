@@ -33,13 +33,24 @@ public class Coordinate {
 		return Math.hypot(xdist, ydist);
 	}
 
+	/**
+	 * Return the straight-line time estimate to another Coordinate, assuming 64.4 km/h
+	 *
+	 * @param other
+	 * @return
+	 */
 	 public double time(Coordinate other){
 		 double xdist = Math.abs(this.x - other.x);
 			double ydist = Math.abs(this.y - other.y);
-			return Math.hypot(xdist, ydist)/40.0;
+			return Math.hypot(xdist, ydist)/64.4;
 	 }
 	
-	// What is this supposed to do? Straight-line time, assuming a certain speed? Or am I totally
-	// missing something?
+	 /**
+	  * Return (x,y)
+	  */
+	@Override
+	public String toString(){
+		return "("+this.x+","+this.y+")";
+	}
 
 }

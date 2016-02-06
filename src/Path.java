@@ -16,5 +16,13 @@ public class Path {
 		this.length=length;
 		this.time=time;
 	}
+	
+	/**
+	 * Return destination name/length/time as a string
+	 */
+	@Override
+	public String toString(){
+		return this.destination+" ("+this.length+" km, "+this.time+" hr)";
+	}
 
 }

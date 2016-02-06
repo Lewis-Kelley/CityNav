@@ -116,6 +116,14 @@ public class Node {
 		return this.name;
 	}
 	
+	/**
+	 * Return this Node's name and coordinate as a String
+	 */
+	@Override
+	public String toString(){
+		return this.name+" "+this.coord.toString();
+	}
+	
 	public void draw(Graphics2D g) {
 		//
 	}
