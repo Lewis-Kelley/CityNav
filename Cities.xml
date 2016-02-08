@@ -1,0 +1,1152 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<java version="1.8.0_66" class="java.beans.XMLDecoder">
+ <object class="java.util.HashMap">
+  <void method="put">
+   <string>Mediterranean Avenue</string>
+   <object class="Node" id="Node0">
+    <void property="coordinate">
+     <object class="Coordinate">
+      <void property="x">
+       <double>89.0</double>
+      </void>
+      <void property="y">
+       <double>6.0</double>
+      </void>
+     </object>
+    </void>
+    <void property="name">
+     <string>Mediterranean Avenue</string>
+    </void>
+    <void property="neighbors">
+     <void method="add">
+      <object class="Path" id="Path0">
+       <void property="length">
+        <double>18.0</double>
+       </void>
+       <void property="nodeA">
+        <object class="Node" id="Node1">
+         <void property="coordinate">
+          <object class="Coordinate">
+           <void property="x">
+            <double>77.0</double>
+           </void>
+           <void property="y">
+            <double>-5.0</double>
+           </void>
+          </object>
+         </void>
+         <void property="interest">
+          <int>7</int>
+         </void>
+         <void property="name">
+          <string>Baltic Avenue</string>
+         </void>
+         <void property="neighbors">
+          <void method="add">
+           <object class="Path" id="Path1">
+            <void property="length">
+             <double>50.0</double>
+            </void>
+            <void property="nodeA">
+             <object class="Node" id="Node2">
+              <void property="coordinate">
+               <object class="Coordinate">
+                <void property="x">
+                 <double>50.0</double>
+                </void>
+                <void property="y">
+                 <double>12.0</double>
+                </void>
+               </object>
+              </void>
+              <void property="interest">
+               <int>3</int>
+              </void>
+              <void property="name">
+               <string>Oriental Avenue</string>
+              </void>
+              <void property="neighbors">
+               <void method="add">
+                <object class="Path" id="Path2">
+                 <void property="length">
+                  <double>44.0</double>
+                 </void>
+                 <void property="nodeA">
+                  <object class="Node" id="Node3">
+                   <void property="coordinate">
+                    <object class="Coordinate">
+                     <void property="x">
+                      <double>17.0</double>
+                     </void>
+                    </object>
+                   </void>
+                   <void property="interest">
+                    <int>10</int>
+                   </void>
+                   <void property="name">
+                    <string>Connecticut Avenue</string>
+                   </void>
+                   <void property="neighbors">
+                    <void method="add">
+                     <object class="Path" id="Path3">
+                      <void property="length">
+                       <double>15.0</double>
+                      </void>
+                      <void property="nodeA">
+                       <object idref="Node3"/>
+                      </void>
+                      <void property="nodeB">
+                       <object class="Node" id="Node4">
+                        <void property="coordinate">
+                         <object class="Coordinate">
+                          <void property="x">
+                           <double>24.0</double>
+                          </void>
+                          <void property="y">
+                           <double>-3.0</double>
+                          </void>
+                         </object>
+                        </void>
+                        <void property="interest">
+                         <int>4</int>
+                        </void>
+                        <void property="name">
+                         <string>Vermont Avenue</string>
+                        </void>
+                        <void property="neighbors">
+                         <void method="add">
+                          <object idref="Path3"/>
+                         </void>
+                         <void method="add">
+                          <object class="Path" id="Path4">
+                           <void property="length">
+                            <double>35.0</double>
+                           </void>
+                           <void property="nodeA">
+                            <object idref="Node4"/>
+                           </void>
+                           <void property="nodeB">
+                            <object idref="Node2"/>
+                           </void>
+                           <void property="time">
+                            <double>11.0</double>
+                           </void>
+                          </object>
+                         </void>
+                         <void method="add">
+                          <object class="Path" id="Path5">
+                           <void property="length">
+                            <double>51.0</double>
+                           </void>
+                           <void property="nodeA">
+                            <object idref="Node4"/>
+                           </void>
+                           <void property="nodeB">
+                            <object class="Node" id="Node5">
+                             <void property="coordinate">
+                              <object class="Coordinate">
+                               <void property="x">
+                                <double>62.0</double>
+                               </void>
+                               <void property="y">
+                                <double>30.0</double>
+                               </void>
+                              </object>
+                             </void>
+                             <void property="interest">
+                              <int>-5</int>
+                             </void>
+                             <void property="name">
+                              <string>Reading Railroad</string>
+                             </void>
+                             <void property="neighbors">
+                              <void method="add">
+                               <object idref="Path5"/>
+                              </void>
+                              <void method="add">
+                               <object class="Path" id="Path6">
+                                <void property="length">
+                                 <double>40.0</double>
+                                </void>
+                                <void property="nodeA">
+                                 <object idref="Node1"/>
+                                </void>
+                                <void property="nodeB">
+                                 <object idref="Node5"/>
+                                </void>
+                                <void property="time">
+                                 <double>13.0</double>
+                                </void>
+                               </object>
+                              </void>
+                              <void method="add">
+                               <object class="Path" id="Path7">
+                                <void property="length">
+                                 <double>60.0</double>
+                                </void>
+                                <void property="nodeA">
+                                 <object idref="Node5"/>
+                                </void>
+                                <void property="nodeB">
+                                 <object class="Node" id="Node6">
+                                  <void property="coordinate">
+                                   <object class="Coordinate">
+                                    <void property="x">
+                                     <double>33.0</double>
+                                    </void>
+                                    <void property="y">
+                                     <double>51.0</double>
+                                    </void>
+                                   </object>
+                                  </void>
+                                  <void property="interest">
+                                   <int>-5</int>
+                                  </void>
+                                  <void property="name">
+                                   <string>Pennsylvania Railroad</string>
+                                  </void>
+                                  <void property="neighbors">
+                                   <void method="add">
+                                    <object class="Path" id="Path8">
+                                     <void property="length">
+                                      <double>49.0</double>
+                                     </void>
+                                     <void property="nodeA">
+                                      <object class="Node" id="Node7">
+                                       <void property="coordinate">
+                                        <object class="Coordinate">
+                                         <void property="x">
+                                          <double>12.0</double>
+                                         </void>
+                                         <void property="y">
+                                          <double>35.0</double>
+                                         </void>
+                                        </object>
+                                       </void>
+                                       <void property="interest">
+                                        <int>9</int>
+                                       </void>
+                                       <void property="name">
+                                        <string>States Avenue</string>
+                                       </void>
+                                       <void property="neighbors">
+                                        <void method="add">
+                                         <object class="Path" id="Path9">
+                                          <void property="length">
+                                           <double>30.0</double>
+                                          </void>
+                                          <void property="nodeA">
+                                           <object class="Node" id="Node8">
+                                            <void property="coordinate">
+                                             <object class="Coordinate">
+                                              <void property="x">
+                                               <double>-5.0</double>
+                                              </void>
+                                              <void property="y">
+                                               <double>18.0</double>
+                                              </void>
+                                             </object>
+                                            </void>
+                                            <void property="interest">
+                                             <int>7</int>
+                                            </void>
+                                            <void property="name">
+                                             <string>St. Charles Place</string>
+                                            </void>
+                                            <void property="neighbors">
+                                             <void method="add">
+                                              <object class="Path" id="Path10">
+                                               <void property="length">
+                                                <double>40.0</double>
+                                               </void>
+                                               <void property="nodeA">
+                                                <object idref="Node3"/>
+                                               </void>
+                                               <void property="nodeB">
+                                                <object idref="Node8"/>
+                                               </void>
+                                               <void property="time">
+                                                <double>12.5</double>
+                                               </void>
+                                              </object>
+                                             </void>
+                                             <void method="add">
+                                              <object idref="Path9"/>
+                                             </void>
+                                             <void method="add">
+                                              <object class="Path" id="Path11">
+                                               <void property="length">
+                                                <double>50.0</double>
+                                               </void>
+                                               <void property="nodeA">
+                                                <object idref="Node8"/>
+                                               </void>
+                                               <void property="nodeB">
+                                                <object class="Node" id="Node9">
+                                                 <void property="coordinate">
+                                                  <object class="Coordinate">
+                                                   <void property="x">
+                                                    <double>2.0</double>
+                                                   </void>
+                                                   <void property="y">
+                                                    <double>43.0</double>
+                                                   </void>
+                                                  </object>
+                                                 </void>
+                                                 <void property="interest">
+                                                  <int>15</int>
+                                                 </void>
+                                                 <void property="name">
+                                                  <string>Virginia Avenue</string>
+                                                 </void>
+                                                 <void property="neighbors">
+                                                  <void method="add">
+                                                   <object class="Path" id="Path12">
+                                                    <void property="length">
+                                                     <double>22.0</double>
+                                                    </void>
+                                                    <void property="nodeA">
+                                                     <object idref="Node7"/>
+                                                    </void>
+                                                    <void property="nodeB">
+                                                     <object idref="Node9"/>
+                                                    </void>
+                                                    <void property="time">
+                                                     <double>5.0</double>
+                                                    </void>
+                                                   </object>
+                                                  </void>
+                                                  <void method="add">
+                                                   <object idref="Path11"/>
+                                                  </void>
+                                                  <void method="add">
+                                                   <object class="Path" id="Path13">
+                                                    <void property="length">
+                                                     <double>41.0</double>
+                                                    </void>
+                                                    <void property="nodeA">
+                                                     <object idref="Node9"/>
+                                                    </void>
+                                                    <void property="nodeB">
+                                                     <object class="Node" id="Node10">
+                                                      <void property="coordinate">
+                                                       <object class="Coordinate">
+                                                        <void property="x">
+                                                         <double>-9.0</double>
+                                                        </void>
+                                                        <void property="y">
+                                                         <double>68.0</double>
+                                                        </void>
+                                                       </object>
+                                                      </void>
+                                                      <void property="interest">
+                                                       <int>11</int>
+                                                      </void>
+                                                      <void property="name">
+                                                       <string>St. James Place</string>
+                                                      </void>
+                                                      <void property="neighbors">
+                                                       <void method="add">
+                                                        <object idref="Path13"/>
+                                                       </void>
+                                                       <void method="add">
+                                                        <object class="Path" id="Path14">
+                                                         <void property="length">
+                                                          <double>33.0</double>
+                                                         </void>
+                                                         <void property="nodeA">
+                                                          <object idref="Node10"/>
+                                                         </void>
+                                                         <void property="nodeB">
+                                                          <object class="Node" id="Node11">
+                                                           <void property="coordinate">
+                                                            <object class="Coordinate">
+                                                             <void property="y">
+                                                              <double>72.0</double>
+                                                             </void>
+                                                            </object>
+                                                           </void>
+                                                           <void property="interest">
+                                                            <int>6</int>
+                                                           </void>
+                                                           <void property="name">
+                                                            <string>Tennesee Avenue</string>
+                                                           </void>
+                                                           <void property="neighbors">
+                                                            <void method="add">
+                                                             <object idref="Path14"/>
+                                                            </void>
+                                                           </void>
+                                                          </object>
+                                                         </void>
+                                                         <void property="time">
+                                                          <double>9.0</double>
+                                                         </void>
+                                                        </object>
+                                                       </void>
+                                                       <void method="add">
+                                                        <object class="Path" id="Path15">
+                                                         <void property="length">
+                                                          <double>69.0</double>
+                                                         </void>
+                                                         <void property="nodeA">
+                                                          <object idref="Node10"/>
+                                                         </void>
+                                                         <void property="nodeB">
+                                                          <object class="Node" id="Node12">
+                                                           <void property="coordinate">
+                                                            <object class="Coordinate">
+                                                             <void property="x">
+                                                              <double>11.0</double>
+                                                             </void>
+                                                             <void property="y">
+                                                              <double>90.0</double>
+                                                             </void>
+                                                            </object>
+                                                           </void>
+                                                           <void property="interest">
+                                                            <int>3</int>
+                                                           </void>
+                                                           <void property="name">
+                                                            <string>New York Avenue</string>
+                                                           </void>
+                                                           <void property="neighbors">
+                                                            <void method="add">
+                                                             <object idref="Path15"/>
+                                                            </void>
+                                                            <void method="add">
+                                                             <object class="Path" id="Path16">
+                                                              <void property="length">
+                                                               <double>51.0</double>
+                                                              </void>
+                                                              <void property="nodeA">
+                                                               <object idref="Node12"/>
+                                                              </void>
+                                                              <void property="nodeB">
+                                                               <object class="Node" id="Node13">
+                                                                <void property="coordinate">
+                                                                 <object class="Coordinate">
+                                                                  <void property="x">
+                                                                   <double>16.0</double>
+                                                                  </void>
+                                                                  <void property="y">
+                                                                   <double>105.0</double>
+                                                                  </void>
+                                                                 </object>
+                                                                </void>
+                                                                <void property="interest">
+                                                                 <int>8</int>
+                                                                </void>
+                                                                <void property="name">
+                                                                 <string>Kentucky Avenue</string>
+                                                                </void>
+                                                                <void property="neighbors">
+                                                                 <void method="add">
+                                                                  <object idref="Path16"/>
+                                                                 </void>
+                                                                 <void method="add">
+                                                                  <object class="Path" id="Path17">
+                                                                   <void property="length">
+                                                                    <double>24.0</double>
+                                                                   </void>
+                                                                   <void property="nodeA">
+                                                                    <object idref="Node13"/>
+                                                                   </void>
+                                                                   <void property="nodeB">
+                                                                    <object class="Node" id="Node14">
+                                                                     <void property="coordinate">
+                                                                      <object class="Coordinate">
+                                                                       <void property="x">
+                                                                        <double>31.0</double>
+                                                                       </void>
+                                                                       <void property="y">
+                                                                        <double>96.0</double>
+                                                                       </void>
+                                                                      </object>
+                                                                     </void>
+                                                                     <void property="interest">
+                                                                      <int>4</int>
+                                                                     </void>
+                                                                     <void property="name">
+                                                                      <string>Indiana Avenue</string>
+                                                                     </void>
+                                                                     <void property="neighbors">
+                                                                      <void method="add">
+                                                                       <object idref="Path17"/>
+                                                                      </void>
+                                                                      <void method="add">
+                                                                       <object class="Path" id="Path18">
+                                                                        <void property="length">
+                                                                         <double>26.0</double>
+                                                                        </void>
+                                                                        <void property="nodeA">
+                                                                         <object idref="Node14"/>
+                                                                        </void>
+                                                                        <void property="nodeB">
+                                                                         <object class="Node" id="Node15">
+                                                                          <void property="coordinate">
+                                                                           <object class="Coordinate">
+                                                                            <void property="x">
+                                                                             <double>42.0</double>
+                                                                            </void>
+                                                                            <void property="y">
+                                                                             <double>111.0</double>
+                                                                            </void>
+                                                                           </object>
+                                                                          </void>
+                                                                          <void property="interest">
+                                                                           <int>13</int>
+                                                                          </void>
+                                                                          <void property="name">
+                                                                           <string>Illinois Avenue</string>
+                                                                          </void>
+                                                                          <void property="neighbors">
+                                                                           <void method="add">
+                                                                            <object idref="Path18"/>
+                                                                           </void>
+                                                                           <void method="add">
+                                                                            <object class="Path" id="Path19">
+                                                                             <void property="length">
+                                                                              <double>38.0</double>
+                                                                             </void>
+                                                                             <void property="nodeA">
+                                                                              <object idref="Node13"/>
+                                                                             </void>
+                                                                             <void property="nodeB">
+                                                                              <object idref="Node15"/>
+                                                                             </void>
+                                                                             <void property="time">
+                                                                              <double>13.0</double>
+                                                                             </void>
+                                                                            </object>
+                                                                           </void>
+                                                                           <void method="add">
+                                                                            <object class="Path" id="Path20">
+                                                                             <void property="length">
+                                                                              <double>50.0</double>
+                                                                             </void>
+                                                                             <void property="nodeA">
+                                                                              <object idref="Node15"/>
+                                                                             </void>
+                                                                             <void property="nodeB">
+                                                                              <object class="Node" id="Node16">
+                                                                               <void property="coordinate">
+                                                                                <object class="Coordinate">
+                                                                                 <void property="x">
+                                                                                  <double>67.0</double>
+                                                                                 </void>
+                                                                                 <void property="y">
+                                                                                  <double>83.0</double>
+                                                                                 </void>
+                                                                                </object>
+                                                                               </void>
+                                                                               <void property="interest">
+                                                                                <int>2</int>
+                                                                               </void>
+                                                                               <void property="name">
+                                                                                <string>Atlantic Avenue</string>
+                                                                               </void>
+                                                                               <void property="neighbors">
+                                                                                <void method="add">
+                                                                                 <object idref="Path20"/>
+                                                                                </void>
+                                                                                <void method="add">
+                                                                                 <object class="Path" id="Path21">
+                                                                                  <void property="length">
+                                                                                   <double>41.0</double>
+                                                                                  </void>
+                                                                                  <void property="nodeA">
+                                                                                   <object idref="Node16"/>
+                                                                                  </void>
+                                                                                  <void property="nodeB">
+                                                                                   <object class="Node" id="Node17">
+                                                                                    <void property="coordinate">
+                                                                                     <object class="Coordinate">
+                                                                                      <void property="x">
+                                                                                       <double>78.0</double>
+                                                                                      </void>
+                                                                                      <void property="y">
+                                                                                       <double>99.0</double>
+                                                                                      </void>
+                                                                                     </object>
+                                                                                    </void>
+                                                                                    <void property="interest">
+                                                                                     <int>4</int>
+                                                                                    </void>
+                                                                                    <void property="name">
+                                                                                     <string>Ventnor Avenue</string>
+                                                                                    </void>
+                                                                                    <void property="neighbors">
+                                                                                     <void method="add">
+                                                                                      <object idref="Path21"/>
+                                                                                     </void>
+                                                                                     <void method="add">
+                                                                                      <object class="Path" id="Path22">
+                                                                                       <void property="length">
+                                                                                        <double>38.0</double>
+                                                                                       </void>
+                                                                                       <void property="nodeA">
+                                                                                        <object idref="Node17"/>
+                                                                                       </void>
+                                                                                       <void property="nodeB">
+                                                                                        <object class="Node" id="Node18">
+                                                                                         <void property="coordinate">
+                                                                                          <object class="Coordinate">
+                                                                                           <void property="x">
+                                                                                            <double>99.0</double>
+                                                                                           </void>
+                                                                                           <void property="y">
+                                                                                            <double>101.0</double>
+                                                                                           </void>
+                                                                                          </object>
+                                                                                         </void>
+                                                                                         <void property="interest">
+                                                                                          <int>7</int>
+                                                                                         </void>
+                                                                                         <void property="name">
+                                                                                          <string>Marvin Gardens</string>
+                                                                                         </void>
+                                                                                         <void property="neighbors">
+                                                                                          <void method="add">
+                                                                                           <object idref="Path22"/>
+                                                                                          </void>
+                                                                                          <void method="add">
+                                                                                           <object class="Path" id="Path23">
+                                                                                            <void property="length">
+                                                                                             <double>44.0</double>
+                                                                                            </void>
+                                                                                            <void property="nodeA">
+                                                                                             <object idref="Node18"/>
+                                                                                            </void>
+                                                                                            <void property="nodeB">
+                                                                                             <object class="Node" id="Node19">
+                                                                                              <void property="coordinate">
+                                                                                               <object class="Coordinate">
+                                                                                                <void property="x">
+                                                                                                 <double>113.0</double>
+                                                                                                </void>
+                                                                                                <void property="y">
+                                                                                                 <double>87.0</double>
+                                                                                                </void>
+                                                                                               </object>
+                                                                                              </void>
+                                                                                              <void property="interest">
+                                                                                               <int>8</int>
+                                                                                              </void>
+                                                                                              <void property="name">
+                                                                                               <string>Baltic Avenue</string>
+                                                                                              </void>
+                                                                                              <void property="neighbors">
+                                                                                               <void method="add">
+                                                                                                <object idref="Path23"/>
+                                                                                               </void>
+                                                                                              </void>
+                                                                                             </object>
+                                                                                            </void>
+                                                                                            <void property="time">
+                                                                                             <double>20.0</double>
+                                                                                            </void>
+                                                                                           </object>
+                                                                                          </void>
+                                                                                         </void>
+                                                                                        </object>
+                                                                                       </void>
+                                                                                       <void property="time">
+                                                                                        <double>14.0</double>
+                                                                                       </void>
+                                                                                      </object>
+                                                                                     </void>
+                                                                                     <void method="add">
+                                                                                      <object class="Path" id="Path24">
+                                                                                       <void property="length">
+                                                                                        <double>44.0</double>
+                                                                                       </void>
+                                                                                       <void property="nodeA">
+                                                                                        <object idref="Node17"/>
+                                                                                       </void>
+                                                                                       <void property="nodeB">
+                                                                                        <object class="Node" id="Node20">
+                                                                                         <void property="coordinate">
+                                                                                          <object class="Coordinate">
+                                                                                           <void property="x">
+                                                                                            <double>53.0</double>
+                                                                                           </void>
+                                                                                           <void property="y">
+                                                                                            <double>72.0</double>
+                                                                                           </void>
+                                                                                          </object>
+                                                                                         </void>
+                                                                                         <void property="interest">
+                                                                                          <int>-5</int>
+                                                                                         </void>
+                                                                                         <void property="name">
+                                                                                          <string>B&amp;O Railroad</string>
+                                                                                         </void>
+                                                                                         <void property="neighbors">
+                                                                                          <void method="add">
+                                                                                           <object class="Path" id="Path25">
+                                                                                            <void property="length">
+                                                                                             <double>45.0</double>
+                                                                                            </void>
+                                                                                            <void property="nodeA">
+                                                                                             <object idref="Node14"/>
+                                                                                            </void>
+                                                                                            <void property="nodeB">
+                                                                                             <object idref="Node20"/>
+                                                                                            </void>
+                                                                                            <void property="time">
+                                                                                             <double>16.0</double>
+                                                                                            </void>
+                                                                                           </object>
+                                                                                          </void>
+                                                                                          <void method="add">
+                                                                                           <object idref="Path24"/>
+                                                                                          </void>
+                                                                                          <void method="add">
+                                                                                           <object class="Path" id="Path26">
+                                                                                            <void property="length">
+                                                                                             <double>62.0</double>
+                                                                                            </void>
+                                                                                            <void property="nodeA">
+                                                                                             <object idref="Node5"/>
+                                                                                            </void>
+                                                                                            <void property="nodeB">
+                                                                                             <object idref="Node20"/>
+                                                                                            </void>
+                                                                                            <void property="time">
+                                                                                             <double>7.0</double>
+                                                                                            </void>
+                                                                                           </object>
+                                                                                          </void>
+                                                                                          <void method="add">
+                                                                                           <object class="Path" id="Path27">
+                                                                                            <void property="length">
+                                                                                             <double>55.0</double>
+                                                                                            </void>
+                                                                                            <void property="nodeA">
+                                                                                             <object idref="Node6"/>
+                                                                                            </void>
+                                                                                            <void property="nodeB">
+                                                                                             <object idref="Node20"/>
+                                                                                            </void>
+                                                                                            <void property="time">
+                                                                                             <double>8.0</double>
+                                                                                            </void>
+                                                                                           </object>
+                                                                                          </void>
+                                                                                         </void>
+                                                                                        </object>
+                                                                                       </void>
+                                                                                       <void property="time">
+                                                                                        <double>19.0</double>
+                                                                                       </void>
+                                                                                      </object>
+                                                                                     </void>
+                                                                                    </void>
+                                                                                   </object>
+                                                                                  </void>
+                                                                                  <void property="time">
+                                                                                   <double>18.0</double>
+                                                                                  </void>
+                                                                                 </object>
+                                                                                </void>
+                                                                               </void>
+                                                                              </object>
+                                                                             </void>
+                                                                             <void property="time">
+                                                                              <double>17.0</double>
+                                                                             </void>
+                                                                            </object>
+                                                                           </void>
+                                                                          </void>
+                                                                         </object>
+                                                                        </void>
+                                                                        <void property="time">
+                                                                         <double>9.0</double>
+                                                                        </void>
+                                                                       </object>
+                                                                      </void>
+                                                                      <void method="add">
+                                                                       <object idref="Path25"/>
+                                                                      </void>
+                                                                     </void>
+                                                                    </object>
+                                                                   </void>
+                                                                   <void property="time">
+                                                                    <double>8.0</double>
+                                                                   </void>
+                                                                  </object>
+                                                                 </void>
+                                                                 <void method="add">
+                                                                  <object idref="Path19"/>
+                                                                 </void>
+                                                                </void>
+                                                               </object>
+                                                              </void>
+                                                              <void property="time">
+                                                               <double>16.0</double>
+                                                              </void>
+                                                             </object>
+                                                            </void>
+                                                           </void>
+                                                          </object>
+                                                         </void>
+                                                         <void property="time">
+                                                          <double>22.0</double>
+                                                         </void>
+                                                        </object>
+                                                       </void>
+                                                       <void method="add">
+                                                        <object class="Path" id="Path28">
+                                                         <void property="length">
+                                                          <double>70.0</double>
+                                                         </void>
+                                                         <void property="nodeA">
+                                                          <object idref="Node10"/>
+                                                         </void>
+                                                         <void property="nodeB">
+                                                          <object idref="Node6"/>
+                                                         </void>
+                                                         <void property="time">
+                                                          <double>18.0</double>
+                                                         </void>
+                                                        </object>
+                                                       </void>
+                                                      </void>
+                                                     </object>
+                                                    </void>
+                                                    <void property="time">
+                                                     <double>17.0</double>
+                                                    </void>
+                                                   </object>
+                                                  </void>
+                                                 </void>
+                                                </object>
+                                               </void>
+                                               <void property="time">
+                                                <double>14.0</double>
+                                               </void>
+                                              </object>
+                                             </void>
+                                            </void>
+                                           </object>
+                                          </void>
+                                          <void property="nodeB">
+                                           <object idref="Node7"/>
+                                          </void>
+                                          <void property="time">
+                                           <double>11.0</double>
+                                          </void>
+                                         </object>
+                                        </void>
+                                        <void method="add">
+                                         <object idref="Path12"/>
+                                        </void>
+                                        <void method="add">
+                                         <object idref="Path8"/>
+                                        </void>
+                                       </void>
+                                      </object>
+                                     </void>
+                                     <void property="nodeB">
+                                      <object idref="Node6"/>
+                                     </void>
+                                     <void property="time">
+                                      <double>12.0</double>
+                                     </void>
+                                    </object>
+                                   </void>
+                                   <void method="add">
+                                    <object idref="Path28"/>
+                                   </void>
+                                   <void method="add">
+                                    <object idref="Path7"/>
+                                   </void>
+                                   <void method="add">
+                                    <object idref="Path27"/>
+                                   </void>
+                                  </void>
+                                 </object>
+                                </void>
+                                <void property="time">
+                                 <double>10.0</double>
+                                </void>
+                               </object>
+                              </void>
+                              <void method="add">
+                               <object idref="Path26"/>
+                              </void>
+                             </void>
+                            </object>
+                           </void>
+                           <void property="time">
+                            <double>12.0</double>
+                           </void>
+                          </object>
+                         </void>
+                        </void>
+                       </object>
+                      </void>
+                      <void property="time">
+                       <double>6.0</double>
+                      </void>
+                     </object>
+                    </void>
+                    <void method="add">
+                     <object idref="Path2"/>
+                    </void>
+                    <void method="add">
+                     <object idref="Path10"/>
+                    </void>
+                   </void>
+                  </object>
+                 </void>
+                 <void property="nodeB">
+                  <object idref="Node2"/>
+                 </void>
+                 <void property="time">
+                  <double>16.0</double>
+                 </void>
+                </object>
+               </void>
+               <void method="add">
+                <object idref="Path4"/>
+               </void>
+               <void method="add">
+                <object idref="Path1"/>
+               </void>
+              </void>
+             </object>
+            </void>
+            <void property="nodeB">
+             <object idref="Node1"/>
+            </void>
+            <void property="time">
+             <double>18.0</double>
+            </void>
+           </object>
+          </void>
+          <void method="add">
+           <object idref="Path0"/>
+          </void>
+          <void method="add">
+           <object idref="Path6"/>
+          </void>
+         </void>
+        </object>
+       </void>
+       <void property="nodeB">
+        <object idref="Node0"/>
+       </void>
+       <void property="time">
+        <double>5.0</double>
+       </void>
+      </object>
+     </void>
+     <void method="add">
+      <object class="Path" id="Path29">
+       <void property="length">
+        <double>31.0</double>
+       </void>
+       <void property="nodeA">
+        <object idref="Node0"/>
+       </void>
+       <void property="nodeB">
+        <object class="Node" id="Node21">
+         <void property="coordinate">
+          <object class="Coordinate">
+           <void property="x">
+            <double>102.0</double>
+           </void>
+           <void property="y">
+            <double>14.0</double>
+           </void>
+          </object>
+         </void>
+         <void property="interest">
+          <int>16</int>
+         </void>
+         <void property="name">
+          <string>Boardwalk</string>
+         </void>
+         <void property="neighbors">
+          <void method="add">
+           <object idref="Path29"/>
+          </void>
+         </void>
+        </object>
+       </void>
+       <void property="time">
+        <double>15.0</double>
+       </void>
+      </object>
+     </void>
+    </void>
+   </object>
+  </void>
+  <void method="put">
+   <string>Park Place</string>
+   <object class="Node">
+    <void property="coordinate">
+     <object class="Coordinate">
+      <void property="x">
+       <double>96.0</double>
+      </void>
+      <void property="y">
+       <double>31.0</double>
+      </void>
+     </object>
+    </void>
+    <void property="interest">
+     <int>7</int>
+    </void>
+    <void property="name">
+     <string>Park Place</string>
+    </void>
+   </object>
+  </void>
+  <void method="put">
+   <string>Short Line</string>
+   <object class="Node">
+    <void property="coordinate">
+     <object class="Coordinate">
+      <void property="x">
+       <double>68.0</double>
+      </void>
+      <void property="y">
+       <double>42.0</double>
+      </void>
+     </object>
+    </void>
+    <void property="interest">
+     <int>-5</int>
+    </void>
+    <void property="name">
+     <string>Short Line</string>
+    </void>
+   </object>
+  </void>
+  <void method="put">
+   <string>Boardwalk</string>
+   <object idref="Node21"/>
+  </void>
+  <void method="put">
+   <string>Indiana Avenue</string>
+   <object idref="Node14"/>
+  </void>
+  <void method="put">
+   <string>B&amp;O Railroad</string>
+   <object idref="Node20"/>
+  </void>
+  <void method="put">
+   <string>Connecticut Avenue</string>
+   <object idref="Node3"/>
+  </void>
+  <void method="put">
+   <string>Kentucky Avenue</string>
+   <object idref="Node13"/>
+  </void>
+  <void method="put">
+   <string>Atlantic Avenue</string>
+   <object idref="Node16"/>
+  </void>
+  <void method="put">
+   <string>Ventnor Avenue</string>
+   <object idref="Node17"/>
+  </void>
+  <void method="put">
+   <string>Marvin Gardens</string>
+   <object idref="Node18"/>
+  </void>
+  <void method="put">
+   <string>Pennsylvania Railroad</string>
+   <object idref="Node6"/>
+  </void>
+  <void method="put">
+   <string>Illinois Avenue</string>
+   <object idref="Node15"/>
+  </void>
+  <void method="put">
+   <string>North Carolina Avenue</string>
+   <object class="Node">
+    <void property="coordinate">
+     <object class="Coordinate">
+      <void property="x">
+       <double>100.0</double>
+      </void>
+      <void property="y">
+       <double>69.0</double>
+      </void>
+     </object>
+    </void>
+    <void property="interest">
+     <int>12</int>
+    </void>
+    <void property="name">
+     <string>North Carolina Avenue</string>
+    </void>
+   </object>
+  </void>
+  <void method="put">
+   <string>St. Charles Place</string>
+   <object idref="Node8"/>
+  </void>
+  <void method="put">
+   <string>Pennsylvania Avenue</string>
+   <object class="Node">
+    <void property="coordinate">
+     <object class="Coordinate">
+      <void property="x">
+       <double>84.0</double>
+      </void>
+      <void property="y">
+       <double>50.0</double>
+      </void>
+     </object>
+    </void>
+    <void property="interest">
+     <int>4</int>
+    </void>
+    <void property="name">
+     <string>Pennsylvania Avenue</string>
+    </void>
+   </object>
+  </void>
+  <void method="put">
+   <string>Virginia Avenue</string>
+   <object idref="Node9"/>
+  </void>
+  <void method="put">
+   <string>Reading Railroad</string>
+   <object idref="Node5"/>
+  </void>
+  <void method="put">
+   <string>Baltic Avenue</string>
+   <object idref="Node19"/>
+  </void>
+  <void method="put">
+   <string>Vermont Avenue</string>
+   <object idref="Node4"/>
+  </void>
+  <void method="put">
+   <string>St. James Place</string>
+   <object idref="Node10"/>
+  </void>
+  <void method="put">
+   <string>New York Avenue</string>
+   <object idref="Node12"/>
+  </void>
+  <void method="put">
+   <string>Oriental Avenue</string>
+   <object idref="Node2"/>
+  </void>
+  <void method="put">
+   <string>States Avenue</string>
+   <object idref="Node7"/>
+  </void>
+  <void method="put">
+   <string>Tennesee Avenue</string>
+   <object idref="Node11"/>
+  </void>
+ </object>
+</java>
