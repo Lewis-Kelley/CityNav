@@ -1,3 +1,6 @@
+import java.beans.XMLDecoder;
+import java.io.BufferedInputStream;
+import java.io.FileInputStream;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -32,14 +35,30 @@ public class Graph {
 	private OutputTextBox output;
 
 	public Graph(OutputTextBox out) {
-		nodes = new HashMap<>();
+		nodes = LoadXMLMap();
 		interest = new TreeSet<>();
 		output = out;
 	}
 
 	/**
+	 * 
+	 * Loads the map from the given file, hardcoded to "Cities.xml". Map is set
+	 * in XMLFileInput
+	 * 
+	 * @return the hashmap of names to nodes
+	 */
+	public HashMap<String, Node> LoadXMLMap() {
+		FileInputStream fis = new FileInputStream("Cities.xml");
+		BufferedInputStream bis = new BufferedInputStream(fis);
+		XMLDecoder xmlDecoder = new XMLDecoder(bis);
+		HashMap<String, Node> loadedNodes = (HashMap<String, Node>) xmlDecoder
+				.readObject();
+		return loadedNodes;
+	}
+
+	/**
 	 * Adds the passed Node to the HashMap.
-	 *
+	 * 
 	 * @param n
 	 *            The Node to add.
 	 */
@@ -49,7 +68,7 @@ public class Graph {
 
 	/**
 	 * Searches the nodes for the shortest path to the destination using A*.
-	 *
+	 * 
 	 * @param start
 	 *            The name of the Node to start at.
 	 * @param end
@@ -87,9 +106,9 @@ public class Graph {
 	}
 
 	/**
-	 * Return the "count" most interesting Node's in this Graph. Passing a 0 will return all
-	 * elements.
-	 *
+	 * Return the "count" most interesting Node's in this Graph. Passing a 0
+	 * will return all elements.
+	 * 
 	 * @param count
 	 * @return
 	 */
@@ -110,7 +129,7 @@ public class Graph {
 	/**
 	 * 
 	 * TODO Put here a description of what this method does.
-	 *
+	 * 
 	 * @param byTime
 	 * @param maxCost
 	 * @param start

@@ -71,7 +71,16 @@ public class XMLFileInput {
 		Path p16tr3 = new Path(n16,r3,44,19);
 		Path r1tr3 = new Path(r1, r3, 62, 7);
 		Path r2tr3 = new Path(r2,r3,55,8);
-		// TODO Add right side of board and railroad connections to it
+		Path p18t19 = new Path(n18, n19, 27, 6);
+		Path p19t20 = new Path(n19, n20, 31, 9);
+		Path p20t21 = new Path(n20,n21, 44, 12);
+		Path p21t22 = new Path(n21,n22, 35, 7);
+		Path p18t20 = new Path(n18,n20,50,12);
+		Path p19tr4 = new Path(n19,r4, 43, 10);
+		Path p21r4 = new Path(n21,r4,41,9);
+		Path r1r4 = new Path (r1,r4, 63,8);
+		Path r2r4 = new Path(r2,r4,70,11);
+		Path r3r4 = new Path(r3,r4, 58, 9);
 		nodes.put(n1.getName(), n1);
 		nodes.put(n2.getName(), n2);
 		nodes.put(n3.getName(), n3);
