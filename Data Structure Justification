@@ -1,4 +1,4 @@
-Our project will utilize 3 primary data structures:
+Our project will utilize 4 primary data structures:
 
 - A Graph will map the connections between cities, allowing for an A* search algorithm
   to find the shortest path given distance or time as a metric
