@@ -51,8 +51,7 @@ public class Graph {
 		FileInputStream fis = new FileInputStream("Cities.xml");
 		BufferedInputStream bis = new BufferedInputStream(fis);
 		XMLDecoder xmlDecoder = new XMLDecoder(bis);
-		HashMap<String, Node> loadedNodes = (HashMap<String, Node>) xmlDecoder
-				.readObject();
+		HashMap<String, Node> loadedNodes = (HashMap<String, Node>) xmlDecoder.readObject();
 		return loadedNodes;
 	}
 
@@ -92,13 +91,12 @@ public class Graph {
 			if (curr.node.getName().equals(goal.getName())) // Sucess
 				return curr.path;
 
-			visited.add(curr.node);
+			visited.add(curr.node);                                                       
 
 			children = curr.node.generateChildren(byTime, curr.cost);
 			for (Node n : children.keySet()) {
 				if (!visited.contains(n))
-					q.add(new RankedNode(n, goal, curr.path, (double) children
-							.get(n), byTime));
+					q.add(new RankedNode(n, goal, curr.path, children.get(n), byTime));
 			}
 		}
 
@@ -106,34 +104,34 @@ public class Graph {
 	}
 
 	/**
-	 * Return the "count" most interesting Node's in this Graph. Passing a 0
-	 * will return all elements.
-	 *
-	 * @param count
-	 * @return
-	 */
-	public Node[] mostInteresting(int count) {
-		if (count == 0 || count > interest.size())
-			return (Node[]) interest.toArray();
+ * Return the "count" most interesting Node's in this Graph. Passing a 0
+ * will return all elements.
+ *
+ * @param count
+ * @return
+ */
+public Node[] mostInteresting(int count) {
+	if (count == 0 || count > interest.size())
+		return (Node[]) interest.toArray();
 
-		ArrayList<Node> list = new ArrayList<>();
-		Iterator<Node> it = interest.iterator();
+	ArrayList<Node> list = new ArrayList<>();
+	Iterator<Node> it = interest.iterator();
 
-		for (int i = 0; i < count; i++) {
-			list.add(it.next());
-		}
-
-		return (Node[]) list.toArray();
+	for (int i = 0; i < count; i++) {
+		list.add(it.next());
 	}
 
-	/**
-	 * Returns a list of different routes that optimize some
-	 * combination of number of cities and total interest of the route.
-	 *
-	 * @param byTime True if the cost is measured by time, false if by distance
-	 * @param maxCost The maximum cost for the root
-	 * @param start The name of the starting Node
-	 * @return
+	return (Node[]) list.toArray();
+}
+
+/**
+ * Returns a list of different routes that optimize some
+ * combination of number of cities and total interest of the route.
+ *
+ * @param byTime True if the cost is measured by time, false if by distance
+ * @param maxCost The maximum cost for the root
+ * @param start The name of the starting Node
+ * @return
 	 */
 	public ArrayList<Stack<Node>> planner(boolean byTime, double maxCost,
 										  String start) {
@@ -141,14 +139,17 @@ public class Graph {
 
 		ArrayList<Stack<Node>> paths = new ArrayList<>();
 
-		Stack<Node> visited = new Stack<>();
+		Stack<Node> path = new Stack<>();
+		path.add(starting);
+
+		TreeSet<Node> visited = new TreeSet<>();
 		visited.add(starting);
 
 		// max interest
-		paths.add(plannerHelper(visited, starting, byTime, maxCost, 0, 1, 0));
+		paths.add(plannerHelper(path, visited, starting, byTime, maxCost, 0, 1, 0));
 
 		// max number of cities
-		paths.add(plannerHelper(visited, starting, byTime, maxCost, 0, 0, 1));
+		paths.add(plannerHelper(path, visited, starting, byTime, maxCost, 0, 0, 1));
 
 		return paths;
 
@@ -158,7 +159,8 @@ public class Graph {
 	 * Helper method for planner that recursively finds the best route given a certain
 	 * criteria.
 	 *
-	 * @param visited The path taken to get to the currentCity.
+	 * @param path The path taken to get to the currentCity.
+	 * @param visited A tree containing the list of visited cities to prevent looping.
 	 * @param currentCity The city currently being recursed from.
 	 * @param byTime True if the cost is measured by time, false if by distance
 	 * @param maxCost The maximum cost for the root
@@ -166,13 +168,14 @@ public class Graph {
 	 * @param intCo The coefficient on the interest of each city
 	 * @param numCo The coefficient on the number of cities visited
 	 */
-	private Stack<Node> plannerHelper(Stack<Node> visited, Node currentCity,
+	private Stack<Node> plannerHelper(Stack<Node> path, TreeSet<Node> visited, Node currentCity,
 									  boolean byTime, double maxCost, double curCost, int intCo, int numCo) {
 
 		HashMap<Node, Double> neighbors = currentCity.generateChildren(byTime,
 																	   curCost);
 
-		visited.push(currentCity);
+		path.push(currentCity);
+		visited.add(currentCity);
 
 		double currentBest = -10000;
 		Stack<Node> bestResults = null;
@@ -186,7 +189,7 @@ public class Graph {
 			if (neighbors.get(city) + curCost > maxCost)
 				break;
 
-			Stack<Node> results = plannerHelper((Stack<Node>) visited.clone(),
+			Stack<Node> results = plannerHelper((Stack<Node>)path.clone(), (TreeSet<Node>)visited.clone(),
 												city, byTime, maxCost, curCost + neighbors.get(city),
 												intCo, numCo);
 
