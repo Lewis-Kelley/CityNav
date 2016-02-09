@@ -41,10 +41,10 @@ public class Graph {
 	}
 
 	/**
-	 * 
+	 *
 	 * Loads the map from the given file, hardcoded to "Cities.xml". Map is set
 	 * in XMLFileInput
-	 * 
+	 *
 	 * @return the hashmap of names to nodes
 	 */
 	public HashMap<String, Node> LoadXMLMap() {
@@ -58,7 +58,7 @@ public class Graph {
 
 	/**
 	 * Adds the passed Node to the HashMap.
-	 * 
+	 *
 	 * @param n
 	 *            The Node to add.
 	 */
@@ -68,7 +68,7 @@ public class Graph {
 
 	/**
 	 * Searches the nodes for the shortest path to the destination using A*.
-	 * 
+	 *
 	 * @param start
 	 *            The name of the Node to start at.
 	 * @param end
@@ -108,7 +108,7 @@ public class Graph {
 	/**
 	 * Return the "count" most interesting Node's in this Graph. Passing a 0
 	 * will return all elements.
-	 * 
+	 *
 	 * @param count
 	 * @return
 	 */
@@ -127,16 +127,16 @@ public class Graph {
 	}
 
 	/**
-	 * 
-	 * TODO Put here a description of what this method does.
-	 * 
-	 * @param byTime
-	 * @param maxCost
-	 * @param start
+	 * Returns a list of different routes that optimize some
+	 * combination of number of cities and total interest of the route.
+	 *
+	 * @param byTime True if the cost is measured by time, false if by distance
+	 * @param maxCost The maximum cost for the root
+	 * @param start The name of the starting Node
 	 * @return
 	 */
-	public ArrayList<Stack<Node>> planner(boolean byTime, int maxCost,
-			String start) {
+	public ArrayList<Stack<Node>> planner(boolean byTime, double maxCost,
+										  String start) {
 		Node starting = nodes.get(start);
 
 		ArrayList<Stack<Node>> paths = new ArrayList<>();
@@ -154,11 +154,23 @@ public class Graph {
 
 	}
 
+	/**
+	 * Helper method for planner that recursively finds the best route given a certain
+	 * criteria.
+	 *
+	 * @param visited The path taken to get to the currentCity.
+	 * @param currentCity The city currently being recursed from.
+	 * @param byTime True if the cost is measured by time, false if by distance
+	 * @param maxCost The maximum cost for the root
+	 * @param curCost The cost to get from the starting Node to the currentCity
+	 * @param intCo The coefficient on the interest of each city
+	 * @param numCo The coefficient on the number of cities visited
+	 */
 	private Stack<Node> plannerHelper(Stack<Node> visited, Node currentCity,
-			boolean byTime, double maxCost, double curCost, int intCo, int numCo) {
+									  boolean byTime, double maxCost, double curCost, int intCo, int numCo) {
 
 		HashMap<Node, Double> neighbors = currentCity.generateChildren(byTime,
-				curCost);
+																	   curCost);
 
 		visited.push(currentCity);
 
@@ -167,7 +179,7 @@ public class Graph {
 
 		for (Node city : neighbors.keySet()) {
 			// BC 1: already visited
-			if (neighbors.containsKey(city))
+			if (visited.contains(city))
 				break;
 
 			// BC 2: too far
@@ -175,8 +187,8 @@ public class Graph {
 				break;
 
 			Stack<Node> results = plannerHelper((Stack<Node>) visited.clone(),
-					city, byTime, maxCost, curCost + neighbors.get(city),
-					intCo, numCo);
+												city, byTime, maxCost, curCost + neighbors.get(city),
+												intCo, numCo);
 
 			double sum = 0;
 			for (Node resultCity : results) {
@@ -187,8 +199,8 @@ public class Graph {
 				currentBest = sum;
 				bestResults = results;
 			}
-
 		}
 
+		return bestResults;
 	}
 }
