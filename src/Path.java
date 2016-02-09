@@ -1,3 +1,6 @@
+import java.awt.Graphics2D;
+import java.awt.geom.Line2D;
+
 public class Path {
 	private Node nodeA;
 	private Node nodeB;
@@ -125,5 +128,11 @@ public class Path {
 		return this.nodeA.toString() + " -> " + this.nodeB.toString() + " ("
 				+ this.length + " km, " + this.time + " hr)";
 	}
-
+	
+	public void draw(Graphics2D g) {
+		Line2D line = new Line2D.Double(nodeA.getCoordinate().getX(), nodeA.getCoordinate().getY(),
+				nodeB.getCoordinate().getX(), nodeB.getCoordinate().getY());
+		
+		g.draw(line);
+	}
 }

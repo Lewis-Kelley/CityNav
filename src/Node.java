@@ -2,7 +2,11 @@ import java.awt.Graphics2D;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+import javax.swing.ImageIcon;
+import javax.swing.JLabel;
+
 public class Node {
+	public static final double NODE_RADIUS = 10.0;
 
 	private String name;
 	private Coordinate coord;
@@ -10,9 +14,9 @@ public class Node {
 	private ArrayList<Path> neighbors = new ArrayList();
 
 	/**
-	 * 
+	 *
 	 * Constructs a new node with a given name, location, and interest level
-	 * 
+	 *
 	 * @param name
 	 * @param coord
 	 * @param interest
@@ -31,9 +35,9 @@ public class Node {
 	}
 
 	/**
-	 * 
+	 *
 	 * For XML input ONLY
-	 * 
+	 *
 	 * @param neighbors
 	 *            sets neighbors to given list of paths
 	 */
@@ -42,7 +46,7 @@ public class Node {
 	}
 
 	/**
-	 * 
+	 *
 	 * @return the list of paths away from this point
 	 */
 	public ArrayList<Path> getNeighbors() {
@@ -50,7 +54,7 @@ public class Node {
 	}
 
 	/**
-	 * 
+	 *
 	 * @param name
 	 *            the new name of the node
 	 */
@@ -59,7 +63,7 @@ public class Node {
 	}
 
 	/**
-	 * 
+	 *
 	 * @param coord
 	 *            the new coordinates of the node
 	 */
@@ -68,7 +72,7 @@ public class Node {
 	}
 
 	/**
-	 * 
+	 *
 	 * @param interest
 	 *            the new interest level of the node
 	 */
@@ -77,7 +81,7 @@ public class Node {
 	}
 
 	/**
-	 * 
+	 *
 	 * @return the interest level of the node
 	 */
 	public int getInterest() {
@@ -85,7 +89,7 @@ public class Node {
 	}
 
 	/**
-	 * 
+	 *
 	 * @return the coordinate of the node
 	 */
 	public Coordinate getCoordinate() {
@@ -94,7 +98,7 @@ public class Node {
 
 	/**
 	 * Add the Path to neighbors
-	 * 
+	 *
 	 * @param path
 	 */
 	public void addToNeighbors(Path path) {
@@ -103,7 +107,7 @@ public class Node {
 
 	/**
 	 * Return straight line distance to other Node's coordinate
-	 * 
+	 *
 	 * @param other
 	 * @return
 	 */
@@ -113,7 +117,7 @@ public class Node {
 
 	/**
 	 * Return straight line time to other Node's coordinate
-	 * 
+	 *
 	 * @param other
 	 * @return
 	 */
@@ -124,7 +128,7 @@ public class Node {
 	/**
 	 * Find the length associated with the Path to the specified Node. Return -1
 	 * if other Node is not a neighbor.
-	 * 
+	 *
 	 * @param other
 	 * @return
 	 */
@@ -141,7 +145,7 @@ public class Node {
 	/**
 	 * Find the time associated with the Path to the specified Node Return -1 if
 	 * other Node is not a neighbor.
-	 * 
+	 *
 	 * @param other
 	 * @return
 	 */
@@ -157,26 +161,26 @@ public class Node {
 	/**
 	 * Returns a HashMap<Node,Double> linking each neighbor and (the current
 	 * cost + the cost to go to that neighbor)
-	 * 
+	 *
 	 * @param byTime
 	 * @param currCost
 	 * @return
 	 */
 	public HashMap<Node, Double> generateChildren(boolean byTime,
-			double currCost) {
+												  double currCost) {
 		HashMap<Node, Double> children = new HashMap();
 
 		if (byTime) {
 			// by time: use neighbor.time
 			for (Path neighbor : this.neighbors) {
 				children.put(neighbor.destination(this), neighbor.getTime()
-						+ currCost);
+							 + currCost);
 			}
 		} else {
 			// else, by dist: use neighbor.length
 			for (Path neighbor : this.neighbors) {
 				children.put(neighbor.destination(this), neighbor.getLength()
-						+ currCost);
+							 + currCost);
 			}
 		}
 
@@ -186,7 +190,7 @@ public class Node {
 	/**
 	 * Compares this node's interest to the other node's interest, using the
 	 * standard .compareTo() method
-	 * 
+	 *
 	 * @param other
 	 * @return
 	 */
@@ -196,7 +200,7 @@ public class Node {
 
 	/**
 	 * Return name
-	 * 
+	 *
 	 * @return
 	 */
 	public String getName() {
@@ -212,6 +216,8 @@ public class Node {
 	}
 
 	public void draw(Graphics2D g) {
-		//
+		ImageIcon icon;
+		JLabel label = new JLabel(name, icon, JLabel.CENTER);
+		g.drawOval((int)coord.getX(), (int)coord.getY(), (int)(NODE_RADIUS * 2), (int)(NODE_RADIUS * 2));
 	}
 }
