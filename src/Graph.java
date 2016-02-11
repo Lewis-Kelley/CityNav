@@ -1,4 +1,3 @@
-import java.awt.Graphics2D;
 import java.beans.XMLDecoder;
 import java.io.BufferedInputStream;
 import java.io.FileInputStream;
@@ -35,12 +34,17 @@ public class Graph {
 
 	private HashMap<String, Node> nodes;
 	private TreeSet<Node> interest;
-	public Graphics2D g;
 
-	public Graph(Graphics2D g) {
+	public Graph() {
 		this.nodes = LoadXMLMap();
 		this.interest = new TreeSet<>();
-		this.g = g;
+		for (String key : this.nodes.keySet()) {
+			this.interest.add(this.nodes.get(key));
+		}
+	}
+	
+	public HashMap<String, Node> getNodes(){
+		return this.nodes;
 	}
 
 	/**
