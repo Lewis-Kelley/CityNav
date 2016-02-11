@@ -12,6 +12,8 @@ public class Main {
 	public static void main(String[] args) {
 
 		JFrame CityNavFrame = new JFrame();
+		CityNavFrame.setResizable(false);
+		CityNavFrame.setSize(1500, 700);
 
 		JPanel CityNavPanel = new JPanel(new BorderLayout());
 		CityNavFrame.add(CityNavPanel);
@@ -108,7 +110,6 @@ public class Main {
 			}
 		}
 
-		CityNavFrame.pack();
 		CityNavFrame.setVisible(true);
 	}
 
