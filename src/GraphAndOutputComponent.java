@@ -17,13 +17,14 @@ import javax.swing.JComponent;
  */
 public class GraphAndOutputComponent extends JComponent {
 	public Graph cityMap;
-	public TextArea outputText;
+	private TextArea outputText;
 	private HashMap<Node, Ellipse2D.Double> imageCircles;
 	private static final double scale = 1.0;
 	private static final int cityOffsetX = 0;
 	private static final int cityOffsetY = 0;
 	private static final int diam = 10;
 	private HashMap<Path, Line2D.Double> pathLines;
+	private String textToDisplay;
 
 	/**
 	 * 
@@ -35,6 +36,8 @@ public class GraphAndOutputComponent extends JComponent {
 		this.cityMap = new Graph();
 		this.outputText = new TextArea("Welcome to CityNav");
 		ArrayList<Node> visitedNodes = new ArrayList<Node>();
+		this.imageCircles = new HashMap<Node, Ellipse2D.Double>();
+		this.pathLines = new HashMap<Path, Line2D.Double>();
 		for (String key : this.cityMap.getNodes().keySet()) {
 			Node tempNode = this.cityMap.getNodes().get(key);
 			visitedNodes.add(tempNode);
@@ -81,6 +84,12 @@ public class GraphAndOutputComponent extends JComponent {
 			Line2D.Double pathLine = this.pathLines.get(key);
 			graphics.draw(pathLine);
 		}
+
+		this.outputText.setText(this.textToDisplay);
+	}
+
+	public void setText(String textToDisplay) {
+		this.textToDisplay = textToDisplay;
 	}
 
 }
