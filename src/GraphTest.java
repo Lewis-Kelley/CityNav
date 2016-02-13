@@ -1,6 +1,9 @@
-import static org.junit.Assert.*;
-import java.util.Stack;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotEquals;
+import static org.junit.Assert.fail;
+
 import java.util.HashMap;
+import java.util.Stack;
 
 import org.junit.Test;
 
@@ -58,14 +61,41 @@ public class GraphTest {
         assertEquals(0, path.size());
     }
 
-    // @Test
+    @Test
     public void testMostInteresting() {
-        fail("Not yet implemented");
+        Graph g = new Graph();
+        Node[] mostInt = g.mostInteresting(5);
+
+        assertNotEquals(null, mostInt);
+        for(int i = 1; i < mostInt.length; i++)
+            if(mostInt[i].getInterest() < mostInt[i - 1].getInterest())
+                fail(mostInt[i].getInterest() + " < " + mostInt[i - 1].getInterest());
+
+                    
+        mostInt = g.mostInteresting(30);
+
+        assertNotEquals(null, mostInt);
+        for(int i = 1; i < mostInt.length; i++)
+            if(mostInt[i].getInterest() < mostInt[i - 1].getInterest())
+                fail(mostInt[i].getInterest() + " < " + mostInt[i - 1].getInterest());
 	}
 
-	// @Test
+	@Test
 	public void testPlanner() {
-		fail("Not yet implemented");
-	}
+        Graph g = new Graph();
 
+        for(Stack<Node> p : g.planner(false, 200, "Short Line")) {
+            for(Node n : p) {
+                System.out.println(n);
+            }
+            System.out.println("------");
+        }
+
+        for(Stack<Node> p : g.planner(false, 500, "B&O Railroad")) {
+            for(Node n : p) {
+                System.out.println(n);
+            }
+            System.out.println("------");
+        }
+	}
 }

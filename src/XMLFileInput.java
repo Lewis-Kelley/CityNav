@@ -32,8 +32,7 @@ public class XMLFileInput {
 		Node n16 = new Node("Ventnor Avenue", new Coordinate(78, 99), 42);
 		Node n17 = new Node("Marvin Gardens", new Coordinate(99, 101), 72);
 		Node n18 = new Node("Pacific Avenue", new Coordinate(113, 87), 81);
-		Node n19 = new Node("North Carolina Avenue", new Coordinate(100, 69),
-				120);
+		Node n19 = new Node("North Carolina Avenue", new Coordinate(100, 69), 120);
 		Node n20 = new Node("Pennsylvania Avenue", new Coordinate(84, 50), 43);
 		Node n21 = new Node("Park Place", new Coordinate(96, 31), 73);
 		Node n22 = new Node("Boardwalk", new Coordinate(102, 14), 160);

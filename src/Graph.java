@@ -60,8 +60,7 @@ public class Graph {
 			fis = new FileInputStream("Cities.xml");
 			BufferedInputStream bis = new BufferedInputStream(fis);
 			XMLDecoder xmlDecoder = new XMLDecoder(bis);
-			HashMap<String, Node> loadedNodes = (HashMap<String, Node>) xmlDecoder
-					.readObject();
+			HashMap<String, Node> loadedNodes = (HashMap<String, Node>) xmlDecoder.readObject();
 
             return loadedNodes;
 		} catch (FileNotFoundException exception) {
@@ -121,15 +120,16 @@ public class Graph {
 	}
 
 	/**
-	 * Return the "count" most interesting Node's in this Graph. Passing a 0
-	 * will return all elements.
+	 * Return the "count" most interesting Node's in this Graph. Passing a 0 or
+     * a value greater than the size will return all elements.
 	 * 
 	 * @param count
 	 * @return
 	 */
 	public Node[] mostInteresting(int count) {
+        Node[] ret = new Node[0];
 		if (count == 0 || count > interest.size())
-			return (Node[]) interest.toArray();
+			return interest.toArray(ret);
 
 		ArrayList<Node> list = new ArrayList<>();
 		Iterator<Node> it = interest.iterator();
@@ -138,7 +138,7 @@ public class Graph {
 			list.add(it.next());
 		}
 
-		return (Node[]) list.toArray();
+		return list.toArray(ret);
 	}
 
 	/**
@@ -159,19 +159,13 @@ public class Graph {
 
 		ArrayList<Stack<Node>> paths = new ArrayList<>();
 
-		Stack<Node> path = new Stack<>();
-		path.add(starting);
-
-		TreeSet<Node> visited = new TreeSet<>();
-		visited.add(starting);
-
 		// max interest
-		paths.add(plannerHelper(path, visited, starting, byTime, maxCost, 0, 1,
-				0));
+		paths.add(plannerHelper(new Stack<Node>(), new TreeSet<Node>(), starting, byTime,
+                                maxCost, 0, 1, 0));
 
 		// max number of cities
-		paths.add(plannerHelper(path, visited, starting, byTime, maxCost, 0, 0,
-				1));
+		paths.add(plannerHelper(new Stack<Node>(), new TreeSet<Node>(), starting, byTime,
+                                maxCost, 0, 0, 1));
 
 		return paths;
 
@@ -210,20 +204,20 @@ public class Graph {
 		visited.add(currentCity);
 
 		double currentBest = -10000;
-		Stack<Node> bestResults = null;
+		Stack<Node> bestResults = path;
 
 		for (Node city : neighbors.keySet()) {
 			// BC 1: already visited
 			if (visited.contains(city))
-				break;
+				continue;
 
 			// BC 2: too far
-			if (neighbors.get(city) + curCost > maxCost)
-				break;
+			if (neighbors.get(city) > maxCost)
+				continue;
 
 			Stack<Node> results = plannerHelper((Stack<Node>) path.clone(),
 					(TreeSet<Node>) visited.clone(), city, byTime, maxCost,
-					curCost + neighbors.get(city), intCo, numCo);
+					neighbors.get(city), intCo, numCo);
 
 			double sum = 0;
 			for (Node resultCity : results) {

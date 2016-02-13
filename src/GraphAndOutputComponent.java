@@ -19,9 +19,9 @@ public class GraphAndOutputComponent extends JComponent {
 	public Graph cityMap;
 	private TextArea outputText;
 	private HashMap<Node, Ellipse2D.Double> imageCircles;
-	private static final double scale = 1.0;
-	private static final int cityOffsetX = 0;
-	private static final int cityOffsetY = 0;
+	private static final double scale = 5;
+	private static final int cityOffsetX = 100;
+	private static final int cityOffsetY = 50;
 	private static final int diam = 10;
 	private HashMap<Path, Line2D.Double> pathLines;
 	private String textToDisplay;
@@ -35,25 +35,31 @@ public class GraphAndOutputComponent extends JComponent {
 	public GraphAndOutputComponent() {
 		this.cityMap = new Graph();
 		this.outputText = new TextArea("Welcome to CityNav");
-		ArrayList<Node> visitedNodes = new ArrayList<Node>();
 		this.imageCircles = new HashMap<Node, Ellipse2D.Double>();
 		this.pathLines = new HashMap<Path, Line2D.Double>();
+
+		ArrayList<Node> visitedNodes = new ArrayList<Node>();
+
 		for (String key : this.cityMap.getNodes().keySet()) {
 			Node tempNode = this.cityMap.getNodes().get(key);
+
+			Ellipse2D.Double cityEllipse =
+                new Ellipse2D.Double(tempNode.getCoordinate().getX() * scale + cityOffsetX,
+                                     tempNode.getCoordinate().getY() * scale + cityOffsetY,
+                                     diam, diam);
+
 			visitedNodes.add(tempNode);
-			Ellipse2D.Double cityEllipse = new Ellipse2D.Double(tempNode
-					.getCoordinate().getX() * scale + cityOffsetX, tempNode
-					.getCoordinate().getY() * scale + cityOffsetY, diam, diam);
 			this.imageCircles.put(tempNode, cityEllipse);
+
 			for (Path eachPath : tempNode.getNeighbors()) {
 				// check to ensure path hasn't already been drawn from other
 				// start point
 				if (!visitedNodes.contains(eachPath.destination(tempNode))) {
-					Line2D.Double pathLine = new Line2D.Double(eachPath
-							.getNodeA().getCoordinate().getX(), eachPath
-							.getNodeA().getCoordinate().getY(), eachPath
-							.getNodeB().getCoordinate().getX(), eachPath
-							.getNodeB().getCoordinate().getY());
+					Line2D.Double pathLine =
+                        new Line2D.Double(eachPath.getNodeA().getCoordinate().getX() * scale + cityOffsetX,
+                                          eachPath.getNodeA().getCoordinate().getY() * scale + cityOffsetY,
+                                          eachPath.getNodeB().getCoordinate().getX() * scale + cityOffsetX,
+                                          eachPath.getNodeB().getCoordinate().getY() * scale + cityOffsetY);
 					this.pathLines.put(eachPath, pathLine);
 				}
 			}
