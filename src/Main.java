@@ -13,7 +13,7 @@ public class Main {
 
 		JFrame CityNavFrame = new JFrame();
 		CityNavFrame.setResizable(false);
-		CityNavFrame.setSize(1000, 700);
+		CityNavFrame.setSize(1500, 1000);
 
 		JPanel CityNavPanel = new JPanel(new BorderLayout());
 		CityNavFrame.add(CityNavPanel);

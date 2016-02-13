@@ -19,7 +19,7 @@ public class GraphAndOutputComponent extends JComponent {
 	public Graph cityMap;
 	private TextArea outputText;
 	private HashMap<Node, Ellipse2D.Double> imageCircles;
-	private static final double scale = 5;
+	private static final double scale = 7;
 	private static final int cityOffsetX = 100;
 	private static final int cityOffsetY = 50;
 	private static final int diam = 10;
@@ -56,10 +56,10 @@ public class GraphAndOutputComponent extends JComponent {
 				// start point
 				if (!visitedNodes.contains(eachPath.destination(tempNode))) {
 					Line2D.Double pathLine =
-                        new Line2D.Double(eachPath.getNodeA().getCoordinate().getX() * scale + cityOffsetX,
-                                          eachPath.getNodeA().getCoordinate().getY() * scale + cityOffsetY,
-                                          eachPath.getNodeB().getCoordinate().getX() * scale + cityOffsetX,
-                                          eachPath.getNodeB().getCoordinate().getY() * scale + cityOffsetY);
+                        new Line2D.Double(eachPath.getNodeA().getCoordinate().getX() * scale + cityOffsetX + diam / 2,
+                                          eachPath.getNodeA().getCoordinate().getY() * scale + cityOffsetY + diam / 2,
+                                          eachPath.getNodeB().getCoordinate().getX() * scale + cityOffsetX + diam / 2,
+                                          eachPath.getNodeB().getCoordinate().getY() * scale + cityOffsetY + diam / 2);
 					this.pathLines.put(eachPath, pathLine);
 				}
 			}
@@ -84,11 +84,16 @@ public class GraphAndOutputComponent extends JComponent {
 				graphics.setColor(Color.BLUE);
 				graphics.fill(cityEllipse);
 			}
+
+            graphics.setColor(Color.BLACK);
+            graphics.drawString(key.getName(), (int)cityEllipse.getX(), (int)cityEllipse.getY());
 		}
 
 		for (Path key : this.pathLines.keySet()) {
 			Line2D.Double pathLine = this.pathLines.get(key);
 			graphics.draw(pathLine);
+            graphics.drawString(key.getLength() + "/" + key.getTime(),
+                                (int)(pathLine.x1 + pathLine.x2) / 2, (int)(pathLine.y1 + pathLine.y2) / 2);
 		}
 
 		this.outputText.setText(this.textToDisplay);
@@ -97,5 +102,4 @@ public class GraphAndOutputComponent extends JComponent {
 	public void setText(String textToDisplay) {
 		this.textToDisplay = textToDisplay;
 	}
-
 }
