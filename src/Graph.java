@@ -62,7 +62,8 @@ public class Graph {
 			XMLDecoder xmlDecoder = new XMLDecoder(bis);
 			HashMap<String, Node> loadedNodes = (HashMap<String, Node>) xmlDecoder
 					.readObject();
-			return loadedNodes;
+
+            return loadedNodes;
 		} catch (FileNotFoundException exception) {
 			// This should never occurr. Map file is hard-coded in
 			exception.printStackTrace();
@@ -111,7 +112,7 @@ public class Graph {
 			children = curr.node.generateChildren(byTime, curr.cost);
 			for (Node n : children.keySet()) {
 				if (!visited.contains(n))
-					q.add(new RankedNode(n, goal, curr.path, children.get(n),
+					q.add(new RankedNode(n, goal, (Stack<Node>)curr.path.clone(), children.get(n),
 							byTime));
 			}
 		}
@@ -237,4 +238,16 @@ public class Graph {
 
 		return bestResults;
 	}
+
+    /**
+     * Prints out an unsorted list of the Node's in this Graph.
+     */
+    public String toString() {
+        String str = "";
+        for(Node n : interest) {
+            str += n.toString() + "\n";
+        }
+
+        return str;
+    }
 }

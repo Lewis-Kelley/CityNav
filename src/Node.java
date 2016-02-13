@@ -173,20 +173,20 @@ public class Node implements Comparable {
 	 * @return
 	 */
 	public HashMap<Node, Double> generateChildren(boolean byTime,
-			double currCost) {
+                                                  double currCost) {
 		HashMap<Node, Double> children = new HashMap();
 
 		if (byTime) {
 			// by time: use neighbor.time
 			for (Path neighbor : this.neighbors) {
 				children.put(neighbor.destination(this), neighbor.getTime()
-						+ currCost);
+                             + currCost);
 			}
 		} else {
 			// else, by dist: use neighbor.length
 			for (Path neighbor : this.neighbors) {
 				children.put(neighbor.destination(this), neighbor.getLength()
-						+ currCost);
+                             + currCost);
 			}
 		}
 
@@ -218,11 +218,16 @@ public class Node implements Comparable {
 	 */
 	@Override
 	public String toString() {
-		return this.name + " <" + this.interest + "> " + this.coord.toString();
-	}
+        String str = this.name + " <" + this.interest + "> " + this.coord.toString();
+        for(Path p : neighbors) {
+            str += "\n\t" + p.destination(this).getName() + "(D: " + p.getLength() + ", T: " + p.getTime() + ")";
+        }
 
-	@Override
-	public int compareTo(Object other) {
-		return this.interest - ((Node)other).interest;
+        return str;
+    }
+
+    @Override
+    public int compareTo(Object other) {
+        return this.interest - ((Node)other).interest;
 	}
 }
