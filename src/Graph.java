@@ -107,7 +107,7 @@ public class Graph {
 
 		while (!q.isEmpty()) {
 			curr = q.remove();
-			if (curr.node.getName().equals(goal.getName())) // Sucess
+			if (curr.node.getName().equals(goal.getName())) // Success
 				return curr.path;
 
 			visited.add(curr.node);
