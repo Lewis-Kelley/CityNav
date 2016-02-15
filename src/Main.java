@@ -1,4 +1,6 @@
 import java.awt.BorderLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -14,11 +16,18 @@ public class Main {
 		JFrame CityNavFrame = new JFrame();
 		CityNavFrame.setResizable(false);
 		CityNavFrame.setSize(1500, 1000);
+		
+		// Items that various things need to have access to
+		JTextPane OutputText = new JTextPane();
+		final GraphAndOutputComponent gr = new GraphAndOutputComponent(OutputText);
+		JTextField PathfinderStart = new JTextField(10);
+		JTextField PathfinderEnd = new JTextField(10);
+		JTextField PlannerStart = new JTextField(10);
+		JTextField PlannerEnd = new JTextField(10);
 
 		JPanel CityNavPanel = new JPanel(new BorderLayout());
 		CityNavFrame.add(CityNavPanel);
 		{
-			GraphAndOutputComponent gr = new GraphAndOutputComponent();
 			CityNavPanel.add(gr, BorderLayout.CENTER);
 			
 			JPanel ControlsPanel = new JPanel(new BorderLayout());
@@ -28,6 +37,15 @@ public class Main {
 				ControlsPanel.add(ControlsNorthPanel, BorderLayout.NORTH);
 				{
 					JButton InterestButton = new JButton("View Cities By Interest");
+					InterestButton.addActionListener(new ActionListener() {
+						
+						@Override
+						public void actionPerformed(ActionEvent e) {
+							gr.displayIntCities();
+							gr.repaint();
+						}
+						
+					});
 					ControlsNorthPanel.add(InterestButton, BorderLayout.NORTH);
 
 					JPanel PathfinderPanel = new JPanel(new BorderLayout());
@@ -46,10 +64,8 @@ public class Main {
 						JPanel PathfinderInputPanel = new JPanel(new BorderLayout());
 						PathfinderPanel.add(PathfinderInputPanel, BorderLayout.CENTER);
 						{
-							JTextField PathfinderStart = new JTextField(10);
 							PathfinderInputPanel.add(PathfinderStart, BorderLayout.WEST);
 
-							JTextField PathfinderEnd = new JTextField(10);
 							PathfinderInputPanel.add(PathfinderEnd, BorderLayout.EAST);
 						}
 
@@ -85,10 +101,8 @@ public class Main {
 						JPanel PlannerInputPanel = new JPanel(new BorderLayout());
 						PlannerPanel.add(PlannerInputPanel, BorderLayout.CENTER);
 						{
-							JTextField PlannerStart = new JTextField(10);
 							PlannerInputPanel.add(PlannerStart, BorderLayout.WEST);
 
-							JTextField PlannerEnd = new JTextField(10);
 							PlannerInputPanel.add(PlannerEnd, BorderLayout.EAST);
 						}
 
@@ -102,9 +116,8 @@ public class Main {
 							PlannerButtonsPanel.add(PlannerDistanceButton, BorderLayout.WEST);
 						}
 					}
-
-					JTextPane OutputText = new JTextPane();
-					OutputText.setText("This is where output will go.\n\n\n\n\n\n\n");
+					
+					gr.setText("This is where output will go.\n\n\n\n\n\n\n");
 					ControlsSouthPanel.add(OutputText, BorderLayout.SOUTH);
 				}
 			}

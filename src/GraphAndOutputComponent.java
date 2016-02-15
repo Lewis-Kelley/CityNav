@@ -1,13 +1,13 @@
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
-import java.awt.TextArea;
 import java.awt.geom.Ellipse2D;
 import java.awt.geom.Line2D;
 import java.util.ArrayList;
 import java.util.HashMap;
 
 import javax.swing.JComponent;
+import javax.swing.JTextPane;
 
 /**
  * 
@@ -17,7 +17,7 @@ import javax.swing.JComponent;
  */
 public class GraphAndOutputComponent extends JComponent {
 	public Graph cityMap;
-	private TextArea outputText;
+	private JTextPane outputText;
 	private HashMap<Node, Ellipse2D.Double> imageCircles;
 	private static final double scale = 7;
 	private static final int cityOffsetX = 100;
@@ -32,9 +32,9 @@ public class GraphAndOutputComponent extends JComponent {
 	 * constructs a new graph holding the city
 	 * 
 	 */
-	public GraphAndOutputComponent() {
+	public GraphAndOutputComponent(JTextPane out) {
 		this.cityMap = new Graph();
-		this.outputText = new TextArea("Welcome to CityNav");
+		this.outputText = out;
 		this.imageCircles = new HashMap<Node, Ellipse2D.Double>();
 		this.pathLines = new HashMap<Path, Line2D.Double>();
 
@@ -97,6 +97,19 @@ public class GraphAndOutputComponent extends JComponent {
 		}
 
 		this.outputText.setText(this.textToDisplay);
+	}
+	
+	/**
+	 * Sets the text to the list of cities in order of interest.
+	 */
+	public void displayIntCities() {
+		String res = "";
+		Node[] list = cityMap.mostInteresting(0);
+		for(int i = list.length - 1; i >= 0; i--) {
+			res += list[i].getName() + ": " + list[i].getInterest() + "\n";
+		}
+		
+		this.textToDisplay = res;
 	}
 
 	public void setText(String textToDisplay) {
