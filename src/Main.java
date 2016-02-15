@@ -24,6 +24,7 @@ public class Main {
 		final JTextField PathfinderEnd = new JTextField(10);
 		final JTextField PlannerStart = new JTextField(10);
 		final JTextField PlannerEnd = new JTextField(10);
+        final JTextField searchInput = new JTextField(20);
 
 		JPanel CityNavPanel = new JPanel(new BorderLayout());
 		CityNavFrame.add(CityNavPanel);
@@ -36,127 +37,146 @@ public class Main {
 				JPanel ControlsNorthPanel = new JPanel(new BorderLayout());
 				ControlsPanel.add(ControlsNorthPanel, BorderLayout.NORTH);
 				{
-					JButton InterestButton = new JButton("View Cities By Interest");
-					InterestButton.addActionListener(new ActionListener() {
+                    JPanel northNorthPanel = new JPanel(new BorderLayout());
+                    ControlsNorthPanel.add(northNorthPanel, BorderLayout.NORTH);
+                    {
+                        JButton InterestButton = new JButton("View Cities By Interest");
+                        InterestButton.addActionListener(new ActionListener() {
 						
-						@Override
-						public void actionPerformed(ActionEvent e) {
-							gr.displayIntCities();
-							gr.repaint();
-						}
+                                @Override
+                                public void actionPerformed(ActionEvent e) {
+                                    gr.displayIntCities();
+                                    gr.repaint();
+                                }
 						
-					});
-					ControlsNorthPanel.add(InterestButton, BorderLayout.NORTH);
+                            });
+                        northNorthPanel.add(InterestButton, BorderLayout.NORTH);
 
-					JPanel PathfinderPanel = new JPanel(new BorderLayout());
-					ControlsNorthPanel.add(PathfinderPanel, BorderLayout.SOUTH);
-					{
-						JPanel PathfinderLabelsPanel = new JPanel(new BorderLayout());
-						PathfinderPanel.add(PathfinderLabelsPanel, BorderLayout.NORTH);
-						{
-							JLabel PathfinderStartLabel = new JLabel("Start");
-							PathfinderLabelsPanel.add(PathfinderStartLabel, BorderLayout.WEST);
+                        JPanel searchPanel = new JPanel(new BorderLayout());
+                        northNorthPanel.add(searchPanel, BorderLayout.SOUTH);
+                        {
+                            JLabel searchLabel = new JLabel("Search for city: ");
+                            searchPanel.add(searchLabel, BorderLayout.NORTH);
 
-							JLabel PathfinderEndLabel = new JLabel("End");
-							PathfinderLabelsPanel.add(PathfinderEndLabel, BorderLayout.EAST);
-						}
+                            JPanel searchActionPanel = new JPanel(new BorderLayout());
+                            searchPanel.add(searchActionPanel, BorderLayout.SOUTH);
+                            {
+                                searchPanel.add(searchInput, BorderLayout.WEST);
 
-						JPanel PathfinderInputPanel = new JPanel(new BorderLayout());
-						PathfinderPanel.add(PathfinderInputPanel, BorderLayout.CENTER);
-						{
-							PathfinderInputPanel.add(PathfinderStart, BorderLayout.WEST);
+                                JButton searchButton = new JButton("Search");
+                                searchPanel.add(searchButton, BorderLayout.EAST);
+                            }
+                        }
+                    }
 
-							PathfinderInputPanel.add(PathfinderEnd, BorderLayout.EAST);
-						}
+                    JPanel northSouthPanel = new JPanel(new BorderLayout());
+                    ControlsNorthPanel.add(northSouthPanel, BorderLayout.SOUTH);
+                    {
+                        JPanel PathfinderPanel = new JPanel(new BorderLayout());
+                        northSouthPanel.add(PathfinderPanel, BorderLayout.NORTH);
+                        {
+                            JPanel PathfinderLabelsPanel = new JPanel(new BorderLayout());
+                            PathfinderPanel.add(PathfinderLabelsPanel, BorderLayout.NORTH);
+                            {
+                                JLabel PathfinderStartLabel = new JLabel("Pathfinder Start:");
+                                PathfinderLabelsPanel.add(PathfinderStartLabel, BorderLayout.WEST);
 
-						JPanel PathfinderButtonsPanel = new JPanel(new BorderLayout());
-						PathfinderPanel.add(PathfinderButtonsPanel, BorderLayout.SOUTH);
-						{
-							JButton PathfinderTimeButton = new JButton("   Time   ");
-							PathfinderTimeButton.addActionListener(new ActionListener() {
+                                JLabel PathfinderEndLabel = new JLabel("Pathfinder End:");
+                                PathfinderLabelsPanel.add(PathfinderEndLabel, BorderLayout.EAST);
+                            }
 
-								@Override
-								public void actionPerformed(ActionEvent e) {
-									gr.findPath(PathfinderStart.getText(), PathfinderEnd.getText(), true);
-									gr.repaint();
-								}
+                            JPanel PathfinderInputPanel = new JPanel(new BorderLayout());
+                            PathfinderPanel.add(PathfinderInputPanel, BorderLayout.CENTER);
+                            {
+                                PathfinderInputPanel.add(PathfinderStart, BorderLayout.WEST);
+
+                                PathfinderInputPanel.add(PathfinderEnd, BorderLayout.EAST);
+                            }
+
+                            JPanel PathfinderButtonsPanel = new JPanel(new BorderLayout());
+                            PathfinderPanel.add(PathfinderButtonsPanel, BorderLayout.SOUTH);
+                            {
+                                JButton PathfinderTimeButton = new JButton("   Time   ");
+                                PathfinderTimeButton.addActionListener(new ActionListener() {
+
+                                        @Override
+                                        public void actionPerformed(ActionEvent e) {
+                                            gr.findPath(PathfinderStart.getText(), PathfinderEnd.getText(), true);
+                                            gr.repaint();
+                                        }
 								
-							});
-							PathfinderButtonsPanel.add(PathfinderTimeButton, BorderLayout.EAST);
+                                    });
+                                PathfinderButtonsPanel.add(PathfinderTimeButton, BorderLayout.EAST);
 
-							JButton PathfinderDistanceButton = new JButton("Distance");
-							PathfinderDistanceButton.addActionListener(new ActionListener() {
+                                JButton PathfinderDistanceButton = new JButton("Distance");
+                                PathfinderDistanceButton.addActionListener(new ActionListener() {
 
-								@Override
-								public void actionPerformed(ActionEvent e) {
-									gr.findPath(PathfinderStart.getText(), PathfinderEnd.getText(), false);
-									gr.repaint();
-								}
+                                        @Override
+                                        public void actionPerformed(ActionEvent e) {
+                                            gr.findPath(PathfinderStart.getText(), PathfinderEnd.getText(), false);
+                                            gr.repaint();
+                                        }
 								
-							});
-							PathfinderButtonsPanel.add(PathfinderDistanceButton, BorderLayout.WEST);
+                                    });
+                                PathfinderButtonsPanel.add(PathfinderDistanceButton, BorderLayout.WEST);
 							
-						}
-					}
+                            }
+                        }
 
+                        JPanel PlannerPanel = new JPanel(new BorderLayout());
+                        northSouthPanel.add(PlannerPanel, BorderLayout.SOUTH);
+                        {
+                            JPanel PlannerLabelsPanel = new JPanel(new BorderLayout());
+                            PlannerPanel.add(PlannerLabelsPanel, BorderLayout.NORTH);
+                            {
+                                JLabel PlannerStartLabel = new JLabel("Planner Start:");
+                                PlannerLabelsPanel.add(PlannerStartLabel, BorderLayout.WEST);
+
+                                JLabel PlannerEndLabel = new JLabel("Planner Amount:");
+                                PlannerLabelsPanel.add(PlannerEndLabel, BorderLayout.EAST);
+                            }
+
+                            JPanel PlannerInputPanel = new JPanel(new BorderLayout());
+                            PlannerPanel.add(PlannerInputPanel, BorderLayout.CENTER);
+                            {
+                                PlannerInputPanel.add(PlannerStart, BorderLayout.WEST);
+
+                                PlannerInputPanel.add(PlannerEnd, BorderLayout.EAST);
+                            }
+
+                            JPanel PlannerButtonsPanel = new JPanel(new BorderLayout());
+                            PlannerPanel.add(PlannerButtonsPanel, BorderLayout.SOUTH);
+                            {
+                                JButton PlannerTimeButton = new JButton("   Time   ");
+                                PlannerTimeButton.addActionListener(new ActionListener() {
+
+                                        @Override
+                                        public void actionPerformed(ActionEvent e) {
+                                            gr.planner(PlannerStart.getText(), PlannerEnd.getText(), true);		
+                                            gr.repaint();
+                                        }
+								
+                                    });
+                                PlannerButtonsPanel.add(PlannerTimeButton, BorderLayout.EAST);
+
+                                JButton PlannerDistanceButton = new JButton("Distance");
+                                PlannerDistanceButton.addActionListener(new ActionListener() {
+
+                                        @Override
+                                        public void actionPerformed(ActionEvent e) {
+                                            gr.planner(PlannerStart.getText(), PlannerEnd.getText(), false);	
+                                            gr.repaint();
+                                        }
+								
+                                    });
+                                PlannerButtonsPanel.add(PlannerDistanceButton, BorderLayout.WEST);
+                            }
+                        }
+                    }
 				}
 
-				JPanel ControlsSouthPanel = new JPanel(new BorderLayout());
-				ControlsPanel.add(ControlsSouthPanel, BorderLayout.SOUTH);
-				{
-					JPanel PlannerPanel = new JPanel(new BorderLayout());
-					ControlsSouthPanel.add(PlannerPanel, BorderLayout.NORTH);
-					{
-						JPanel PlannerLabelsPanel = new JPanel(new BorderLayout());
-						PlannerPanel.add(PlannerLabelsPanel, BorderLayout.NORTH);
-						{
-							JLabel PlannerStartLabel = new JLabel("Start");
-							PlannerLabelsPanel.add(PlannerStartLabel, BorderLayout.WEST);
-
-							JLabel PlannerEndLabel = new JLabel("Amount");
-							PlannerLabelsPanel.add(PlannerEndLabel, BorderLayout.EAST);
-						}
-
-						JPanel PlannerInputPanel = new JPanel(new BorderLayout());
-						PlannerPanel.add(PlannerInputPanel, BorderLayout.CENTER);
-						{
-							PlannerInputPanel.add(PlannerStart, BorderLayout.WEST);
-
-							PlannerInputPanel.add(PlannerEnd, BorderLayout.EAST);
-						}
-
-						JPanel PlannerButtonsPanel = new JPanel(new BorderLayout());
-						PlannerPanel.add(PlannerButtonsPanel, BorderLayout.SOUTH);
-						{
-							JButton PlannerTimeButton = new JButton("   Time   ");
-							PlannerTimeButton.addActionListener(new ActionListener() {
-
-								@Override
-								public void actionPerformed(ActionEvent e) {
-									gr.planner(PlannerStart.getText(), PlannerEnd.getText(), true);		
-									gr.repaint();
-								}
-								
-							});
-							PlannerButtonsPanel.add(PlannerTimeButton, BorderLayout.EAST);
-
-							JButton PlannerDistanceButton = new JButton("Distance");
-							PlannerDistanceButton.addActionListener(new ActionListener() {
-
-								@Override
-								public void actionPerformed(ActionEvent e) {
-									gr.planner(PlannerStart.getText(), PlannerEnd.getText(), false);	
-									gr.repaint();
-								}
-								
-							});
-							PlannerButtonsPanel.add(PlannerDistanceButton, BorderLayout.WEST);
-						}
-					}
-					
-					gr.setText("This is where output will go.\n\n\n\n\n\n\n");
-					ControlsSouthPanel.add(OutputText, BorderLayout.SOUTH);
-				}
+                gr.setText("Welcome to CityNav!\n\n\n\n\n\n\n");
+                ControlsPanel.add(OutputText, BorderLayout.SOUTH);
 			}
 		}
 
