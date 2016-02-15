@@ -5,6 +5,7 @@ import java.awt.geom.Ellipse2D;
 import java.awt.geom.Line2D;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Stack;
 
 import javax.swing.JComponent;
 import javax.swing.JTextPane;
@@ -19,6 +20,7 @@ public class GraphAndOutputComponent extends JComponent {
 	public Graph cityMap;
 	private JTextPane outputText;
 	private HashMap<Node, Ellipse2D.Double> imageCircles;
+	private Stack<Node> lastPath;
 	private static final double scale = 7;
 	private static final int cityOffsetX = 100;
 	private static final int cityOffsetY = 50;
@@ -36,6 +38,7 @@ public class GraphAndOutputComponent extends JComponent {
 		this.cityMap = new Graph();
 		this.outputText = out;
 		this.imageCircles = new HashMap<Node, Ellipse2D.Double>();
+		this.lastPath = new Stack<Node>();
 		this.pathLines = new HashMap<Path, Line2D.Double>();
 
 		ArrayList<Node> visitedNodes = new ArrayList<Node>();
@@ -110,6 +113,61 @@ public class GraphAndOutputComponent extends JComponent {
 		}
 		
 		this.textToDisplay = res;
+	}
+	
+	/**
+	 * Finds the path between start and end, updates the visuals of the map, and
+	 * stores the path into the output text.
+	 *
+	 * @param start
+	 * @param end
+	 * @param byTime
+	 */
+	public void findPath(String start, String end, boolean byTime) {
+		while(!lastPath.isEmpty()) {
+			lastPath.pop().setisVisited(false);
+		}
+		
+		try {
+			lastPath = cityMap.search(start, end, byTime);
+			
+			Node[] visited = lastPath.toArray(new Node[0]);
+			String res = "";
+			
+			for(int i = visited.length - 1; i >= 0; i--) {
+				visited[i].setisVisited(true);
+				res += visited[i].getName() + "\n";
+			}
+			
+			this.textToDisplay = res;
+		} catch(Exception e) {
+			this.textToDisplay = "ERROR: Please check the names of\nthe cities you are entering.";
+		}
+	}
+	
+	public void planner(String start, String amount, boolean byTime) {
+		while(!lastPath.isEmpty()) {
+			lastPath.pop().setisVisited(false);
+		}
+		
+		try {
+			ArrayList<Stack<Node>> paths = cityMap.planner(byTime, Double.valueOf(amount), start);
+			String res = "";
+			
+			for(int j = 0; j < paths.size(); j++) {
+				Node[] visited = paths.get(j).toArray(new Node[0]);
+				res += "Trip " + j + "\n";
+				
+				for(int i = visited.length - 1; i >= 0; i--) {
+					visited[i].setisVisited(true);
+					res += "\t" + visited[i].getName() + "\n";
+				}
+			}
+		} catch(Exception e) {
+			this.textToDisplay = "ERROR: Please check the names of\n"
+					+ "the cities you are entering and that you entered\n"
+					+ "a valid amount.";
+		}
 	}
 
 	public void setText(String textToDisplay) {

@@ -90,8 +90,12 @@ public class Graph {
 	 * @param byTime
 	 *            True if searching by time, false if by distance
 	 * @return A Stack of Node's representing the shortest path.
+	 * @throws Exception 
 	 */
-	public Stack<Node> search(String start, String end, boolean byTime) {
+	public Stack<Node> search(String start, String end, boolean byTime) throws Exception {
+		if(!nodes.containsKey(start) || !nodes.containsKey(end))
+			throw new Exception("Invalid city names");
+		
 		Node goal = nodes.get(end);
 		RankedNode curr;
 		HashMap<Node, Double> children;

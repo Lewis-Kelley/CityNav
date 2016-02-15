@@ -20,10 +20,10 @@ public class Main {
 		// Items that various things need to have access to
 		JTextPane OutputText = new JTextPane();
 		final GraphAndOutputComponent gr = new GraphAndOutputComponent(OutputText);
-		JTextField PathfinderStart = new JTextField(10);
-		JTextField PathfinderEnd = new JTextField(10);
-		JTextField PlannerStart = new JTextField(10);
-		JTextField PlannerEnd = new JTextField(10);
+		final JTextField PathfinderStart = new JTextField(10);
+		final JTextField PathfinderEnd = new JTextField(10);
+		final JTextField PlannerStart = new JTextField(10);
+		final JTextField PlannerEnd = new JTextField(10);
 
 		JPanel CityNavPanel = new JPanel(new BorderLayout());
 		CityNavFrame.add(CityNavPanel);
@@ -73,10 +73,29 @@ public class Main {
 						PathfinderPanel.add(PathfinderButtonsPanel, BorderLayout.SOUTH);
 						{
 							JButton PathfinderTimeButton = new JButton("   Time   ");
+							PathfinderTimeButton.addActionListener(new ActionListener() {
+
+								@Override
+								public void actionPerformed(ActionEvent e) {
+									gr.findPath(PathfinderStart.getText(), PathfinderEnd.getText(), true);
+									gr.repaint();
+								}
+								
+							});
 							PathfinderButtonsPanel.add(PathfinderTimeButton, BorderLayout.EAST);
 
 							JButton PathfinderDistanceButton = new JButton("Distance");
+							PathfinderDistanceButton.addActionListener(new ActionListener() {
+
+								@Override
+								public void actionPerformed(ActionEvent e) {
+									gr.findPath(PathfinderStart.getText(), PathfinderEnd.getText(), false);
+									gr.repaint();
+								}
+								
+							});
 							PathfinderButtonsPanel.add(PathfinderDistanceButton, BorderLayout.WEST);
+							
 						}
 					}
 
