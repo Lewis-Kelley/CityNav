@@ -14,7 +14,7 @@ public class XMLFileInput {
 	public static void main(String[] args) throws Exception {
 
 		HashMap<String, Node> nodes = new HashMap<String, Node>();
-		Node n1 = new Node("Connecticut Avenue", new Coordinate(17, 0), 100);
+		Node n1 = new Node("Connecticut Avenue", new Coordinate(9, 5), 100);
 		Node n2 = new Node("Vermont Avenue", new Coordinate(24, -3), 40);
 		Node n3 = new Node("Oriental Avenue", new Coordinate(50, 12), 30);
 		Node n4 = new Node("Baltic Avenue", new Coordinate(77, -5), 70);
@@ -28,19 +28,19 @@ public class XMLFileInput {
 		Node n12 = new Node("Kentucky Avenue", new Coordinate(16, 105), 80);
 		Node n13 = new Node("Indiana Avenue", new Coordinate(31, 96), 41);
 		Node n14 = new Node("Illinois Avenue", new Coordinate(42, 111), 130);
-		Node n15 = new Node("Atlantic Avenue", new Coordinate(67, 83), 20);
+		Node n15 = new Node("Atlantic Avenue", new Coordinate(67, 93), 20);
 		Node n16 = new Node("Ventnor Avenue", new Coordinate(78, 99), 42);
 		Node n17 = new Node("Marvin Gardens", new Coordinate(99, 101), 72);
 		Node n18 = new Node("Pacific Avenue", new Coordinate(113, 87), 81);
-		Node n19 = new Node("North Carolina Avenue", new Coordinate(100, 69), 120);
-		Node n20 = new Node("Pennsylvania Avenue", new Coordinate(84, 50), 43);
+		Node n19 = new Node("North Carolina Avenue", new Coordinate(84, 49), 120);
+		Node n20 = new Node("Pennsylvania Avenue", new Coordinate(120, 50), 43);
 		Node n21 = new Node("Park Place", new Coordinate(96, 31), 73);
 		Node n22 = new Node("Boardwalk", new Coordinate(102, 14), 160);
 		Node r1 = new Node("Reading Railroad", new Coordinate(62, 30), -50);
 		Node r2 = new Node("Pennsylvania Railroad", new Coordinate(33, 51), -51);
 		Node r3 = new Node("B&O Railroad", new Coordinate(53, 72), -52);
 		Node r4 = new Node("Short Line", new Coordinate(68, 42), -53);
-		Path p1t2 = new Path(n1, n2, 15, 6);
+		Path p1t2 = new Path(n1, n2, 18, 9);
 		Path p1t3 = new Path(n1, n3, 44, 16);
 		Path p2t3 = new Path(n2, n3, 35, 11);
 		Path p2tr1 = new Path(n2, r1, 51, 12);
@@ -70,12 +70,12 @@ public class XMLFileInput {
 		Path p16tr3 = new Path(n16,r3,44,19);
 		Path r1tr3 = new Path(r1, r3, 62, 7);
 		Path r2tr3 = new Path(r2,r3,55,8);
-		Path p18t19 = new Path(n18, n19, 27, 6);
-		Path p19t20 = new Path(n19, n20, 31, 9);
+		Path p18t19 = new Path(n18, n19, 65, 8);
+		Path p19t20 = new Path(n19, n20, 43, 15);
 		Path p20t21 = new Path(n20,n21, 44, 12);
 		Path p21t22 = new Path(n21,n22, 35, 7);
 		Path p18t20 = new Path(n18,n20,50,12);
-		Path p19tr4 = new Path(n19,r4, 43, 10);
+		Path p19tr4 = new Path(n19,r4, 63, 14);
 		Path p21r4 = new Path(n21,r4,41,9);
 		Path r1r4 = new Path (r1,r4, 63,8);
 		Path r2r4 = new Path(r2,r4,70,11);

@@ -46,10 +46,9 @@ public class GraphAndOutputComponent extends JComponent {
 		for (String key : this.cityMap.getNodes().keySet()) {
 			Node tempNode = this.cityMap.getNodes().get(key);
 
-			Ellipse2D.Double cityEllipse =
-                new Ellipse2D.Double(tempNode.getCoordinate().getX() * scale + cityOffsetX,
-                                     tempNode.getCoordinate().getY() * scale + cityOffsetY,
-                                     diam, diam);
+			Ellipse2D.Double cityEllipse = new Ellipse2D.Double(tempNode
+					.getCoordinate().getX() * scale + cityOffsetX, tempNode
+					.getCoordinate().getY() * scale + cityOffsetY, diam, diam);
 
 			visitedNodes.add(tempNode);
 			this.imageCircles.put(tempNode, cityEllipse);
@@ -58,11 +57,15 @@ public class GraphAndOutputComponent extends JComponent {
 				// check to ensure path hasn't already been drawn from other
 				// start point
 				if (!visitedNodes.contains(eachPath.destination(tempNode))) {
-					Line2D.Double pathLine =
-                        new Line2D.Double(eachPath.getNodeA().getCoordinate().getX() * scale + cityOffsetX + diam / 2,
-                                          eachPath.getNodeA().getCoordinate().getY() * scale + cityOffsetY + diam / 2,
-                                          eachPath.getNodeB().getCoordinate().getX() * scale + cityOffsetX + diam / 2,
-                                          eachPath.getNodeB().getCoordinate().getY() * scale + cityOffsetY + diam / 2);
+					Line2D.Double pathLine = new Line2D.Double(eachPath
+							.getNodeA().getCoordinate().getX()
+							* scale + cityOffsetX + diam / 2, eachPath
+							.getNodeA().getCoordinate().getY()
+							* scale + cityOffsetY + diam / 2, eachPath
+							.getNodeB().getCoordinate().getX()
+							* scale + cityOffsetX + diam / 2, eachPath
+							.getNodeB().getCoordinate().getY()
+							* scale + cityOffsetY + diam / 2);
 					this.pathLines.put(eachPath, pathLine);
 				}
 			}
@@ -88,83 +91,108 @@ public class GraphAndOutputComponent extends JComponent {
 				graphics.fill(cityEllipse);
 			}
 
-            graphics.setColor(Color.BLACK);
-            graphics.drawString(key.getName(), (int)cityEllipse.getX(), (int)cityEllipse.getY());
+			graphics.setColor(Color.BLACK);
+			graphics.drawString(key.getName(), (int) cityEllipse.getX(),
+					(int) cityEllipse.getY());
 		}
 
 		for (Path key : this.pathLines.keySet()) {
 			Line2D.Double pathLine = this.pathLines.get(key);
+			if (key.getisOnRoute()) {
+				graphics.setColor(Color.RED);
+			} else {
+				graphics.setColor(Color.BLACK);
+			}
 			graphics.draw(pathLine);
-            graphics.drawString(key.getLength() + "/" + key.getTime(),
-                                (int)(pathLine.x1 + pathLine.x2) / 2, (int)(pathLine.y1 + pathLine.y2) / 2);
+			graphics.setColor(Color.BLACK);
+			graphics.drawString(key.getLength() + "/" + key.getTime(),
+					(int) (pathLine.x1 + pathLine.x2) / 2,
+					(int) (pathLine.y1 + pathLine.y2) / 2);
 		}
 
 		this.outputText.setText(this.textToDisplay);
 	}
-	
+
 	/**
 	 * Sets the text to the list of cities in order of interest.
 	 */
 	public void displayIntCities() {
 		String res = "";
 		Node[] list = cityMap.mostInteresting(0);
-		for(int i = list.length - 1; i >= 0; i--) {
+		for (int i = list.length - 1; i >= 0; i--) {
 			res += list[i].getName() + ": " + list[i].getInterest() + "\n";
 		}
-		
+
 		this.textToDisplay = res;
 	}
-	
+
 	/**
 	 * Finds the path between start and end, updates the visuals of the map, and
 	 * stores the path into the output text.
-	 *
+	 * 
 	 * @param start
 	 * @param end
 	 * @param byTime
 	 */
 	public void findPath(String start, String end, boolean byTime) {
-		while(!lastPath.isEmpty()) {
-			lastPath.pop().setisVisited(false);
+		while (!lastPath.isEmpty()) {
+			Node tempNode = lastPath.pop();
+			tempNode.setisVisited(false);
+			for (Path tempPath : tempNode.getNeighbors()) {
+				tempPath.setisOnRoute(false);
+			}
 		}
-		
+
 		try {
 			lastPath = cityMap.search(start, end, byTime);
-			
+
 			Node[] visited = lastPath.toArray(new Node[0]);
 			String res = "";
-			
-			for(int i = 0; i < visited.length; i++) {
+
+			for (int i = 0; i < visited.length; i++) {
 				visited[i].setisVisited(true);
 				res += visited[i].getName() + "\n";
+				if (i < visited.length-1) {
+					for (Path tempPath : visited[i].getNeighbors()) {
+						if (tempPath.destination(visited[i]).equals(
+								visited[i + 1])) {
+							tempPath.setisOnRoute(true);
+						}
+					}
+				}
 			}
-			
+
 			this.textToDisplay = res;
-		} catch(Exception e) {
+		} catch (Exception e) {
 			this.textToDisplay = "ERROR: Please check the names of\nthe cities you are entering.";
 		}
 	}
-	
+
 	public void planner(String start, String amount, boolean byTime) {
-		while(!lastPath.isEmpty()) {
-			lastPath.pop().setisVisited(false);
+		while (!lastPath.isEmpty()) {
+			Node tempNode = lastPath.pop();
+			tempNode.setisVisited(false);
+			for (Path tempPath : tempNode.getNeighbors()) {
+				tempPath.setisOnRoute(false);
+			}
 		}
-		
+
 		try {
-			ArrayList<Stack<Node>> paths = cityMap.planner(byTime, Double.valueOf(amount), start);
+			ArrayList<Stack<Node>> paths = cityMap.planner(byTime,
+					Double.valueOf(amount), start);
 			String res = "";
-			
-			for(int j = 0; j < paths.size(); j++) {
+
+			for (int j = 0; j < paths.size(); j++) {
 				Node[] visited = paths.get(j).toArray(new Node[0]);
 				res += "Trip: " + j + "\n";
-				
-				for(int i = 0; i < visited.length; i++) {
+
+				for (int i = 0; i < visited.length; i++) {
 					res += "\t" + visited[i].getName() + "\n";
 				}
 			}
-			
+
 			this.textToDisplay = res;
-		} catch(Exception e) {
+		} catch (Exception e) {
 			this.textToDisplay = "ERROR: Please check the names of\n"
 					+ "the cities you are entering and that you entered\n"
 					+ "a valid amount.";

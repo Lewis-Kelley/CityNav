@@ -6,6 +6,7 @@ public class Path {
 	private Node nodeB;
 	private double length;
 	private double time;
+	private boolean isOnRoute;
 
 	/**
 	 * Initialize a new Path with: - The two specified nodes as nodeA and nodeB
@@ -22,6 +23,7 @@ public class Path {
 		this.nodeB = nodeB;
 		this.length = length;
 		this.time = time;
+		this.isOnRoute = false;
 
 		// Add to nodes' neighbors lists
 		nodeA.addToNeighbors(this);
@@ -54,7 +56,20 @@ public class Path {
 	public Node getNodeA() {
 		return this.nodeA;
 	}
-
+	/**
+	 * 
+	 * @param newState the new state of the path; on or off the route
+	 */
+	public void setisOnRoute(boolean newState){
+		this.isOnRoute= newState;
+	}
+	/**
+	 * 
+	 * @return true if the path is on the current route; false otherwise
+	 */
+	public boolean getisOnRoute(){
+		return this.isOnRoute;
+	}
 	/**
 	 * 
 	 * @param nodeB
