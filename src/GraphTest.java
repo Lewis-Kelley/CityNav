@@ -10,7 +10,7 @@ import org.junit.Test;
 public class GraphTest {
 
 	@Test
-	public void testSearch() {
+	public void testSearch() throws Exception {
         Graph g = new Graph();
         HashMap<String, Node> nodes = g.getNodes();
 
