@@ -129,9 +129,27 @@ public class Main {
 						PlannerPanel.add(PlannerButtonsPanel, BorderLayout.SOUTH);
 						{
 							JButton PlannerTimeButton = new JButton("   Time   ");
+							PlannerTimeButton.addActionListener(new ActionListener() {
+
+								@Override
+								public void actionPerformed(ActionEvent e) {
+									gr.planner(PlannerStart.getText(), PlannerEnd.getText(), true);		
+									gr.repaint();
+								}
+								
+							});
 							PlannerButtonsPanel.add(PlannerTimeButton, BorderLayout.EAST);
 
 							JButton PlannerDistanceButton = new JButton("Distance");
+							PlannerDistanceButton.addActionListener(new ActionListener() {
+
+								@Override
+								public void actionPerformed(ActionEvent e) {
+									gr.planner(PlannerStart.getText(), PlannerEnd.getText(), false);	
+									gr.repaint();
+								}
+								
+							});
 							PlannerButtonsPanel.add(PlannerDistanceButton, BorderLayout.WEST);
 						}
 					}

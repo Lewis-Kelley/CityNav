@@ -134,7 +134,7 @@ public class GraphAndOutputComponent extends JComponent {
 			Node[] visited = lastPath.toArray(new Node[0]);
 			String res = "";
 			
-			for(int i = visited.length - 1; i >= 0; i--) {
+			for(int i = 0; i < visited.length; i++) {
 				visited[i].setisVisited(true);
 				res += visited[i].getName() + "\n";
 			}
@@ -156,13 +156,14 @@ public class GraphAndOutputComponent extends JComponent {
 			
 			for(int j = 0; j < paths.size(); j++) {
 				Node[] visited = paths.get(j).toArray(new Node[0]);
-				res += "Trip " + j + "\n";
+				res += "Trip: " + j + "\n";
 				
-				for(int i = visited.length - 1; i >= 0; i--) {
-					visited[i].setisVisited(true);
+				for(int i = 0; i < visited.length; i++) {
 					res += "\t" + visited[i].getName() + "\n";
 				}
 			}
+			
+			this.textToDisplay = res;
 		} catch(Exception e) {
 			this.textToDisplay = "ERROR: Please check the names of\n"
 					+ "the cities you are entering and that you entered\n"
