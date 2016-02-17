@@ -92,9 +92,9 @@ public class Graph {
 	 * @return A Stack of Node's representing the shortest path.
 	 * @throws Exception 
 	 */
-	public Stack<Node> search(String start, String end, boolean byTime) throws Exception {
-		if(!nodes.containsKey(start) || !nodes.containsKey(end))
-			throw new Exception("Invalid city names");
+	public Object [] search(String start, String end, boolean byTime) throws Exception {
+		if(!nodes.containsKey(start) || !nodes.containsKey(end)){
+			throw new Exception("Invalid city names");}
 		
 		Node goal = nodes.get(end);
 		RankedNode curr;
@@ -107,9 +107,12 @@ public class Graph {
 
 		while (!q.isEmpty()) {
 			curr = q.remove();
-			if (curr.node.getName().equals(goal.getName())) // Success
-				return curr.path;
-
+			if (curr.node.getName().equals(goal.getName())){ // Success
+				Object[] ret =  new Object[2];
+				ret[0]= curr.path;
+				ret[1]=curr.cost;
+				return ret;
+			}
 			visited.add(curr.node);
 
 			children = curr.node.generateChildren(byTime, curr.cost);

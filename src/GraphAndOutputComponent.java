@@ -144,10 +144,18 @@ public class GraphAndOutputComponent extends JComponent {
 		}
 
 		try {
-			lastPath = cityMap.search(start, end, byTime);
+			Object[] searchResults = cityMap.search(start, end, byTime);
+			lastPath = (Stack<Node>) searchResults[0];
+			String cost = ((Double) searchResults[1]).toString();
 
 			Node[] visited = lastPath.toArray(new Node[0]);
-			String res = "";
+
+			String res;
+			if (byTime) {
+				res = cost + " hours:\n";
+			} else {
+				res = cost + " km:\n";
+			}
 
 			for (int i = 0; i < visited.length; i++) {
 				visited[i].setisVisited(true);
@@ -164,6 +172,7 @@ public class GraphAndOutputComponent extends JComponent {
 
 			this.textToDisplay = res;
 		} catch (Exception e) {
+			System.out.println(e);
 			this.textToDisplay = "ERROR: Please check the names of\nthe cities you are entering.";
 		}
 	}
