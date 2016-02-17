@@ -64,6 +64,15 @@ public class Main {
                                 searchPanel.add(searchInput, BorderLayout.WEST);
 
                                 JButton searchButton = new JButton("Search");
+                                searchButton.addActionListener(new ActionListener() {
+									
+									@Override
+									public void actionPerformed(ActionEvent e) {
+										gr.searchCity(searchInput.getText());
+										gr.repaint();
+									}
+									
+								});
                                 searchPanel.add(searchButton, BorderLayout.EAST);
                             }
                         }

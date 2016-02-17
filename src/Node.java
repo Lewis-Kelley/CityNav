@@ -218,7 +218,7 @@ public class Node implements Comparable {
 	 */
 	@Override
 	public String toString() {
-        String str = this.name + " <" + this.interest + "> " + this.coord.toString();
+        String str = this.name + "\nInterest: " + this.interest + "\nLocation: " + this.coord.toString();
         for(Path p : neighbors) {
             str += "\n\t" + p.destination(this).getName() + "(D: " + p.getLength() + ", T: " + p.getTime() + ")";
         }

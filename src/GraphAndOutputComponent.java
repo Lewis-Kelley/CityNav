@@ -198,6 +198,27 @@ public class GraphAndOutputComponent extends JComponent {
 					+ "a valid amount.";
 		}
 	}
+	
+	public void searchCity(String city) {
+		Node c = cityMap.getNodes().get(city);
+		
+		while (!lastPath.isEmpty()) {
+			Node tempNode = lastPath.pop();
+			tempNode.setisVisited(false);
+			for (Path tempPath : tempNode.getNeighbors()) {
+				tempPath.setisOnRoute(false);
+			}
+		}
+		
+		if(c == null) {
+			this.textToDisplay = "ERROR: Please check the names of\n"
+					+ "the cities you are entering.";
+		} else {
+			this.textToDisplay = c.toString();
+			lastPath.push(c);
+			c.setisVisited(true);
+		}
+	}
 
 	public void setText(String textToDisplay) {
 		this.textToDisplay = textToDisplay;
