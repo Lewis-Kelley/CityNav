@@ -160,7 +160,7 @@ public class GraphAndOutputComponent extends JComponent {
 			for (int i = 0; i < visited.length; i++) {
 				visited[i].setisVisited(true);
 				res += visited[i].getName() + "\n";
-				if (i < visited.length-1) {
+				if (i < visited.length - 1) {
 					for (Path tempPath : visited[i].getNeighbors()) {
 						if (tempPath.destination(visited[i]).equals(
 								visited[i + 1])) {
@@ -190,7 +190,8 @@ public class GraphAndOutputComponent extends JComponent {
 			ArrayList<Stack<Node>> paths = cityMap.planner(byTime,
 					Double.valueOf(amount), start);
 			String res = "";
-			String[] pathDescriptions = {"Highest interest","Most Cities"};;
+			String[] pathDescriptions = { "Highest interest (Displayed)", "Most Cities" };
+			;
 			for (int j = 0; j < paths.size(); j++) {
 				Node[] visited = paths.get(j).toArray(new Node[0]);
 				res += pathDescriptions[j] + "\n";
@@ -201,16 +202,34 @@ public class GraphAndOutputComponent extends JComponent {
 			}
 
 			this.textToDisplay = res;
+
+			lastPath = paths.get(0);
+
+			Node[] visited = lastPath.toArray(new Node[0]);
+
+			for (int i = 0; i < visited.length; i++) {
+				visited[i].setisVisited(true);
+				res += visited[i].getName() + "\n";
+				if (i < visited.length - 1) {
+					for (Path tempPath : visited[i].getNeighbors()) {
+						if (tempPath.destination(visited[i]).equals(
+								visited[i + 1])) {
+							tempPath.setisOnRoute(true);
+						}
+					}
+				}
+			}
+
 		} catch (Exception e) {
 			this.textToDisplay = "ERROR: Please check the names of\n"
 					+ "the cities you are entering and that you entered\n"
 					+ "a valid amount.";
 		}
 	}
-	
+
 	public void searchCity(String city) {
 		Node c = cityMap.getNodes().get(capitalize(city));
-		
+
 		while (!lastPath.isEmpty()) {
 			Node tempNode = lastPath.pop();
 			tempNode.setisVisited(false);
@@ -218,8 +237,8 @@ public class GraphAndOutputComponent extends JComponent {
 				tempPath.setisOnRoute(false);
 			}
 		}
-		
-		if(c == null) {
+
+		if (c == null) {
 			this.textToDisplay = "ERROR: Please check the names of\n"
 					+ "the cities you are entering.";
 		} else {
@@ -232,10 +251,11 @@ public class GraphAndOutputComponent extends JComponent {
 	public void setText(String textToDisplay) {
 		this.textToDisplay = textToDisplay;
 	}
-	
+
 	/**
-	 * Capitalize first letter of every word in the input string, return capitalized version
-	 *
+	 * Capitalize first letter of every word in the input string, return
+	 * capitalized version
+	 * 
 	 * @param str
 	 * @return
 	 */
