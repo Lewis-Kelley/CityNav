@@ -209,7 +209,7 @@ public class GraphAndOutputComponent extends JComponent {
 	}
 	
 	public void searchCity(String city) {
-		Node c = cityMap.getNodes().get(city);
+		Node c = cityMap.getNodes().get(capitalize(city));
 		
 		while (!lastPath.isEmpty()) {
 			Node tempNode = lastPath.pop();
@@ -231,5 +231,15 @@ public class GraphAndOutputComponent extends JComponent {
 
 	public void setText(String textToDisplay) {
 		this.textToDisplay = textToDisplay;
+	}
+	
+	/**
+	 * Capitalize first letter of every word in the input string, return capitalized version
+	 *
+	 * @param str
+	 * @return
+	 */
+	public static String capitalize(String str) {
+		return Main.capitalize(str);
 	}
 }

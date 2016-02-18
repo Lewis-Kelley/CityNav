@@ -14,14 +14,14 @@ public class GraphTest {
         Graph g = new Graph();
         HashMap<String, Node> nodes = g.getNodes();
 
-        Stack<Node> path = g.search("B&O Railroad", "Reading Railroad", false);
+        Stack<Node> path = (Stack<Node>) (Stack<Node>) g.search("B&O Railroad", "Reading Railroad", false)[0];
         assertNotEquals(null, path);
 
         assertEquals(nodes.get("Reading Railroad"), path.pop());
         assertEquals(nodes.get("B&O Railroad"), path.pop());
         assertEquals(0, path.size());
 
-        path = g.search("Kentucky Avenue", "Baltic Avenue", false);
+        path = (Stack<Node>) g.search("Kentucky Avenue", "Baltic Avenue", false)[0];
         assertNotEquals(null, path);
 
         assertEquals(nodes.get("Baltic Avenue"), path.pop());
@@ -31,20 +31,20 @@ public class GraphTest {
         assertEquals(nodes.get("Kentucky Avenue"), path.pop());
         assertEquals(0, path.size());
 
-        path = g.search("Baltic Avenue", "Baltic Avenue", false);
+        path = (Stack<Node>) g.search("Baltic Avenue", "Baltic Avenue", false)[0];
         assertNotEquals(null, path);
 
         assertEquals(nodes.get("Baltic Avenue"), path.pop());
         assertEquals(0, path.size());
 
-        path = g.search("B&O Railroad", "Reading Railroad", true);
+        path = (Stack<Node>) g.search("B&O Railroad", "Reading Railroad", true)[0];
         assertNotEquals(null, path);
 
         assertEquals(nodes.get("Reading Railroad"), path.pop());
         assertEquals(nodes.get("B&O Railroad"), path.pop());
         assertEquals(0, path.size());
 
-        path = g.search("Kentucky Avenue", "Baltic Avenue", true);
+        path = (Stack<Node>) g.search("Kentucky Avenue", "Baltic Avenue", true)[0];
         assertNotEquals(null, path);
 
         assertEquals(nodes.get("Baltic Avenue"), path.pop());
@@ -54,7 +54,7 @@ public class GraphTest {
         assertEquals(nodes.get("Kentucky Avenue"), path.pop());
         assertEquals(0, path.size());
 
-        path = g.search("Baltic Avenue", "Baltic Avenue", true);
+        path = (Stack<Node>) g.search("Baltic Avenue", "Baltic Avenue", true)[0];
         assertNotEquals(null, path);
 
         assertEquals(nodes.get("Baltic Avenue"), path.pop());

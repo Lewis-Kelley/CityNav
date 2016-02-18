@@ -42,8 +42,8 @@ public class Graph {
 			this.interest.add(this.nodes.get(key));
 		}
 	}
-	
-	public HashMap<String, Node> getNodes(){
+
+	public HashMap<String, Node> getNodes() {
 		return this.nodes;
 	}
 
@@ -60,9 +60,10 @@ public class Graph {
 			fis = new FileInputStream("Cities.xml");
 			BufferedInputStream bis = new BufferedInputStream(fis);
 			XMLDecoder xmlDecoder = new XMLDecoder(bis);
-			HashMap<String, Node> loadedNodes = (HashMap<String, Node>) xmlDecoder.readObject();
+			HashMap<String, Node> loadedNodes = (HashMap<String, Node>) xmlDecoder
+					.readObject();
 
-            return loadedNodes;
+			return loadedNodes;
 		} catch (FileNotFoundException exception) {
 			// This should never occurr. Map file is hard-coded in
 			exception.printStackTrace();
@@ -81,6 +82,16 @@ public class Graph {
 	}
 
 	/**
+	 * Capitalize first letter of every word in the input string, return capitalized version
+	 *
+	 * @param str
+	 * @return
+	 */
+	public static String capitalize(String str) {
+		return Main.capitalize(str);
+	}
+
+	/**
 	 * Searches the nodes for the shortest path to the destination using A*.
 	 * 
 	 * @param start
@@ -89,13 +100,19 @@ public class Graph {
 	 *            The name of the goal Node.
 	 * @param byTime
 	 *            True if searching by time, false if by distance
-	 * @return A Stack of Node's representing the shortest path.
-	 * @throws Exception 
+	 * @return A Stack of Nodes representing the shortest path.
+	 * @throws Exception
 	 */
-	public Object [] search(String start, String end, boolean byTime) throws Exception {
-		if(!nodes.containsKey(start) || !nodes.containsKey(end)){
-			throw new Exception("Invalid city names");}
-		
+	public Object[] search(String start, String end, boolean byTime)
+			throws Exception {
+
+		start = capitalize(start);
+		end = capitalize(end);
+
+		if (!nodes.containsKey(start) || !nodes.containsKey(end)) {
+			throw new Exception("Invalid city names");
+		}
+
 		Node goal = nodes.get(end);
 		RankedNode curr;
 		HashMap<Node, Double> children;
@@ -107,10 +124,10 @@ public class Graph {
 
 		while (!q.isEmpty()) {
 			curr = q.remove();
-			if (curr.node.getName().equals(goal.getName())){ // Success
-				Object[] ret =  new Object[2];
-				ret[0]= curr.path;
-				ret[1]=curr.cost;
+			if (curr.node.getName().equals(goal.getName())) { // Success
+				Object[] ret = new Object[2];
+				ret[0] = curr.path;
+				ret[1] = curr.cost;
 				return ret;
 			}
 			visited.add(curr.node);
@@ -118,8 +135,8 @@ public class Graph {
 			children = curr.node.generateChildren(byTime, curr.cost);
 			for (Node n : children.keySet()) {
 				if (!visited.contains(n))
-					q.add(new RankedNode(n, goal, (Stack<Node>)curr.path.clone(), children.get(n),
-							byTime));
+					q.add(new RankedNode(n, goal, (Stack<Node>) curr.path
+							.clone(), children.get(n), byTime));
 			}
 		}
 
@@ -127,14 +144,14 @@ public class Graph {
 	}
 
 	/**
-	 * Return the "count" most interesting Node's in this Graph. Passing a 0 or
-     * a value greater than the size will return all elements.
+	 * Return the "count" most interesting Nodes in this Graph. Passing a 0 or
+	 * a value greater than the size will return all elements.
 	 * 
 	 * @param count
 	 * @return
 	 */
 	public Node[] mostInteresting(int count) {
-        Node[] ret = new Node[0];
+		Node[] ret = new Node[0];
 		if (count == 0 || count > interest.size())
 			return interest.toArray(ret);
 
@@ -162,17 +179,17 @@ public class Graph {
 	 */
 	public ArrayList<Stack<Node>> planner(boolean byTime, double maxCost,
 			String start) {
-		Node starting = nodes.get(start);
+		Node starting = nodes.get(capitalize(start));
 
 		ArrayList<Stack<Node>> paths = new ArrayList<>();
 
 		// max interest
-		paths.add(plannerHelper(new Stack<Node>(), new TreeSet<Node>(), starting, byTime,
-                                maxCost, 0, 1, 0));
+		paths.add(plannerHelper(new Stack<Node>(), new TreeSet<Node>(),
+				starting, byTime, maxCost, 0, 1, 0));
 
 		// max number of cities
-		paths.add(plannerHelper(new Stack<Node>(), new TreeSet<Node>(), starting, byTime,
-                                maxCost, 0, 0, 1));
+		paths.add(plannerHelper(new Stack<Node>(), new TreeSet<Node>(),
+				starting, byTime, maxCost, 0, 0, 1));
 
 		return paths;
 
@@ -240,15 +257,15 @@ public class Graph {
 		return bestResults;
 	}
 
-    /**
-     * Prints out an unsorted list of the Node's in this Graph.
-     */
-    public String toString() {
-        String str = "";
-        for(Node n : interest) {
-            str += n.toString() + "\n";
-        }
+	/**
+	 * Prints out an unsorted list of the Nodes in this Graph.
+	 */
+	public String toString() {
+		String str = "";
+		for (Node n : interest) {
+			str += n.toString() + "\n";
+		}
 
-        return str;
-    }
+		return str;
+	}
 }

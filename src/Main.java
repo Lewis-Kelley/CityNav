@@ -201,5 +201,26 @@ public class Main {
 		Path pathOneThree = new Path(one, three, 80, 1.25);
 		System.out.println(one.generateChildren(false, 0));
 	}
+	/**
+	 * Capitalize first letter of every word in the input string, return capitalized version
+	 *
+	 * @param str
+	 * @return
+	 */
+	public static String capitalize(String str) {
+		if (str.length() == 0)
+			return "";
+
+		String[] startSplit = str.split(" ");
+		str = "";
+		for (String word : startSplit) {
+			if (word.length() > 0) {
+				str += " " + word.substring(0, 1).toUpperCase()
+						+ word.substring(1);
+			}
+		}
+
+		return str.substring(1);
+	}
 
 }
