@@ -190,10 +190,10 @@ public class GraphAndOutputComponent extends JComponent {
 			ArrayList<Stack<Node>> paths = cityMap.planner(byTime,
 					Double.valueOf(amount), start);
 			String res = "";
-
+			String[] pathDescriptions = {"Highest interest","Most Cities"};;
 			for (int j = 0; j < paths.size(); j++) {
 				Node[] visited = paths.get(j).toArray(new Node[0]);
-				res += "Trip: " + j + "\n";
+				res += pathDescriptions[j] + "\n";
 
 				for (int i = 0; i < visited.length; i++) {
 					res += "\t" + visited[i].getName() + "\n";
